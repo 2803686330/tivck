@@ -7,7 +7,8 @@ export default [
         component: './login',
         title: '登录',
       },
-      { path: '/user/home', component: './home', title: '注册' },
+      { path: '/user/home', component: './home', title: '首页' },
+      { path: '/user/reg', component: './reg', title: '注册' },
     ],
   },
   // 其他基础路由

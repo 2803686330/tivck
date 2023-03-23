@@ -1,11 +1,11 @@
 import React from 'react';
 import { QHead } from '@@@/index';
 import Qfrom from './components/Qfrom';
-function Login(props) {
+function Reg(props) {
   return (
     <div>
       <QHead
-        title={'登录'}
+        title={'注册账号'}
         background={'rgb(27, 169, 186)'}
         color="white"
         className={'top1'}
@@ -15,4 +15,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Reg;

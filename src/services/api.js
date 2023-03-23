@@ -527,6 +527,6 @@ export default {
   updateEngineUserAccount_put: '/market_manager/adv_account/second_ack_submit',
 
   login: `/api/auth/login`, //登录接口
-  reg: `/auth/register`, //注册接口
+  reg: `/api/auth/register`, //注册接口
   travelList: `/rest/travelList`, //出行快讯接口
 };

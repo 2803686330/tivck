@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavBar, Toast } from 'antd-mobile';
 import cs from 'classnames';
+import { history } from 'dva';
 import './styles.less';
 function QHead(props) {
   const {
@@ -12,11 +13,9 @@ function QHead(props) {
     ...item
   } = props;
 
-  const back = () =>
-    Toast.show({
-      content: '点击了返回区域',
-      duration: 1000,
-    });
+  const back = () => {
+    window.history.back(-1);
+  };
   return (
     <div className={cs('top', { [className]: className })}>
       <NavBar onBack={back} style={{ ...style, background, color }} {...item}>
