@@ -9,10 +9,19 @@ export default {
   namespace: 'index',
 
   state: {
-
+    token: [],
   },
 
-  reducers: {
+  reducers: {},
 
+  effects: {
+    // 智能模板消息列表数据
+    *fetchLogin({ payload }, { call, put }) {
+      const res = yield call(api.getLogin, payload);
+      console.log(res);
+      if (res.data.code == 200) {
+        localStorage.setItem('token', res.data.token);
+      }
+    },
   },
 };

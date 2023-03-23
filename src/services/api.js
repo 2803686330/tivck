@@ -526,7 +526,7 @@ export default {
   // 巨量同步广告 提交
   updateEngineUserAccount_put: '/market_manager/adv_account/second_ack_submit',
 
-  login: `/auth/login`, //登录接口
+  login: `/api/auth/login`, //登录接口
   reg: `/auth/register`, //注册接口
   travelList: `/rest/travelList`, //出行快讯接口
 };
