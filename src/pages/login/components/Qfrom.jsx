@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd-mobile';
-import { connect } from 'dva';
 import './Qfrom.less';
+import { connect } from 'dva';
 import { history } from 'umi';
+
 export default connect((state) => {
   return {};
 })(Qfrom);
@@ -11,14 +12,12 @@ function Qfrom(props) {
   const [form] = Form.useForm();
 
   //   提交
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const values = form.getFieldsValue();
-    if (!values) {
-      dispatch({
-        type: 'index/fetchLogin',
-        payload: values,
-      });
-    }
+    await dispatch({
+      type: 'index/fetchLogin',
+      payload: values,
+    });
   };
 
   // 跳转注册

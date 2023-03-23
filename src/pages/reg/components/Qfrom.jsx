@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Button } from 'antd-mobile';
 import './styles.less';
 import { connect } from 'dva';
+import { history } from 'umi';
 
 export default connect((state) => {
   return {};
@@ -9,15 +10,23 @@ export default connect((state) => {
 function Qfrom(props) {
   const { dispatch } = props;
   const [form] = Form.useForm();
-  //   提交
 
-  const onSubmit = () => {
+  //注册
+  const onSubmit = async () => {
     const values = form.getFieldsValue();
-    if (!values) {
-      dispatch({
+    console.log(values);
+    if (values.username && values.password == values.againpwd) {
+      await dispatch({
+        type: 'reg/fetchReg',
+        payload: values,
+      });
+
+      await dispatch({
         type: 'index/fetchLogin',
         payload: values,
       });
+
+      history.push('/user/home');
     }
   };
   //   判断二次密码是否正确
@@ -69,7 +78,7 @@ function Qfrom(props) {
         <Input placeholder="密码不能为空" />
       </Form.Item>
       <Form.Item
-        name="password1"
+        name="againpwd"
         label="确认密码"
         dependencies={['password']}
         validateTrigger="onChange"
