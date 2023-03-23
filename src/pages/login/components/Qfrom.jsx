@@ -13,10 +13,12 @@ function Qfrom(props) {
 
   const onSubmit = () => {
     const values = form.getFieldsValue();
-    dispatch({
-      type: 'index/fetchLogin',
-      payload: values,
-    });
+    if (!values) {
+      dispatch({
+        type: 'index/fetchLogin',
+        payload: values,
+      });
+    }
   };
   return (
     <Form
