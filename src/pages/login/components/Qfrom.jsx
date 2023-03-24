@@ -64,7 +64,7 @@ function Qfrom(props) {
         label="密码"
         rules={[{ required: true, message: '请输入密码' }]}
       >
-        <Input placeholder="密码不能为空" />
+        <Input type="password" placeholder="密码不能为空" />
       </Form.Item>
     </Form>
   );

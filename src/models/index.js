@@ -22,7 +22,7 @@ export default {
   },
 
   effects: {
-    // 智能模板消息列表数据
+    // 登录
     *fetchLogin({ payload }, { call, put }) {
       const res = yield call(api.getLogin, payload);
       if (_.get(res, 'data.code') === 200) {
@@ -32,7 +32,7 @@ export default {
         });
         localStorage.setItem('userInfo', JSON.stringify(res.data));
         localStorage.setItem('token', res.data.token);
-        history.push('/user/home');
+        history.push('/home');
       }
     },
   },

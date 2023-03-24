@@ -7,15 +7,16 @@ export default [
         component: './login',
         title: '登录',
       },
-      { path: '/user/home', component: './home', title: '首页' },
       { path: '/user/reg', component: './reg', title: '注册' },
     ],
   },
-  // 其他基础路由
+  // 其他路由
   {
     path: '/',
     component: '@/layouts/MainLayout',
-    wrappers: ['@/pages/authorized'],
-    routes: [{ path: '/', component: './detail', title: '通知公告' }],
+    routes: [
+      { path: '/home', component: './home', title: '首页' },
+      { path: '/detail', component: './detail', title: '通知公告' },
+    ],
   },
 ];
