@@ -2,6 +2,7 @@ import { Switch } from 'antd-mobile';
 import React from 'react';
 import './styles.less';
 import { QIcon } from '@@@'; //引入icon
+import Qswiper from './components/Qswiper';
 function Home() {
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_12o7dr7evgs.js';
   return (
@@ -43,6 +44,10 @@ function Home() {
             </div>
           </div>
         </div>
+      </div>
+      {/* 轮播图 */}
+      <div styleName="Swipers">
+        <Qswiper />
       </div>
     </div>
   );
