@@ -15,8 +15,11 @@ export default [
     path: '/',
     component: '@/layouts/MainLayout',
     routes: [
-      { path: '/home', component: './home', title: '首页' },
+      { path: '/', component: './home', title: '首页' },
       { path: '/detail', component: './detail', title: '通知公告' },
+      { path: '/orderList', component: './orderList', title: 'orderList' },
+      { path: '/services', component: './services', title: 'services' },
+      { path: '/users', component: './user', title: 'user' },
     ],
   },
 ];

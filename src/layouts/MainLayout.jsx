@@ -1,48 +1,96 @@
 import React, { useState } from 'react';
 import { Badge, TabBar } from 'antd-mobile';
-import { QIcon } from '@@@';
-import {
-  AppOutline,
-  MessageOutline,
-  MessageFill,
-  UnorderedListOutline,
-  UserOutline,
-} from 'antd-mobile-icons';
+import { QIcon } from '@@@'; //引入icon
+import { history } from 'umi';
 import './styles.less';
 
 function MainLayout(props) {
+  const { pathname } = props.location;
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_1rhcgjkjgzb.js';
   const tabs = [
     {
-      key: 'home',
+      key: '/',
       title: '首页',
-      icon: <AppOutline />,
-      badge: Badge.dot,
+      icon: (active) =>
+        active ? (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-home-active'}
+            fontSize={'40px'}
+          />
+        ) : (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-home'}
+            fontSize={'40px'}
+          />
+        ),
     },
     {
-      key: 'todo',
-      title: '待办',
-      icon: (active) => (active ? <QIcon /> : <MessageOutline />),
-
-      badge: '5',
+      key: '/orderList',
+      title: '订单',
+      icon: (active) =>
+        active ? (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-order-active'}
+            fontSize={'40px'}
+          />
+        ) : (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-a-icon-order1'}
+            fontSize={'40px'}
+          />
+        ),
     },
     {
-      key: 'message',
-      title: '消息',
-      icon: <MessageOutline />,
+      key: '/services',
+      title: '客服',
+      icon: (active) =>
+        active ? (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-service-active'}
+            fontSize={'40px'}
+          />
+        ) : (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-service'}
+            fontSize={'40px'}
+          />
+        ),
     },
     {
-      key: 'personalCenter',
+      key: '/users',
       title: '我的',
-      icon: <UserOutline />,
+      icon: (active) =>
+        active ? (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-mine-active'}
+            fontSize={'40px'}
+          />
+        ) : (
+          <QIcon
+            scriptUrl={scriptUrl}
+            type={'icon-icon-mine'}
+            fontSize={'40px'}
+          />
+        ),
     },
   ];
-
-  const [activeKey, setActiveKey] = useState('todo');
+  const [activeKey, setActiveKey] = useState(pathname);
+  const setRouteActive = (value) => {
+    setActiveKey(value);
+    history.push(value);
+  };
   return (
     <div styleName="app">
       <section>{props.children}</section>
       <footer>
-        <TabBar>
+        <TabBar activeKey={activeKey} onChange={setRouteActive}>
           {tabs.map((item) => (
             <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
           ))}
