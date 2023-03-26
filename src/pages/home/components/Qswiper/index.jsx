@@ -1,11 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Image, Swiper, Toast } from 'antd-mobile';
-import { SwiperRef } from 'antd-mobile/es/components/swiper';
-import { list } from './data';
+import { list } from './data'; //数据
 
 function Qswiper() {
   const items = list.map((dt, index) => (
-    <Swiper.Item key={index} loop={true}>
+    <Swiper.Item key={index}>
       <div
         onClick={() => {
           Toast.show(`你点击了卡片 ${index + 1}`);
@@ -15,7 +14,11 @@ function Qswiper() {
       </div>
     </Swiper.Item>
   ));
-  return <Swiper autoplay>{items}</Swiper>;
+  return (
+    <Swiper autoplay loop>
+      {items}
+    </Swiper>
+  );
 }
 
 export default Qswiper;
