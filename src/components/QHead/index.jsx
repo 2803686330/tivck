@@ -9,6 +9,7 @@ function QHead(props) {
     color = 'white',
     style = {},
     className = '',
+    fontSize = '4.347826vw',
     title = '',
     ...item
   } = props;
@@ -18,7 +19,11 @@ function QHead(props) {
   };
   return (
     <div className={cs('top', { [className]: className })}>
-      <NavBar onBack={back} style={{ ...style, background, color }} {...item}>
+      <NavBar
+        onBack={back}
+        style={{ ...style, background, color, fontSize }}
+        {...item}
+      >
         {title}
       </NavBar>
     </div>

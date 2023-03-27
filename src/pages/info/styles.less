@@ -1,0 +1,71 @@
+.box {
+    position: fixed;
+    z-index: 1000;
+}
+
+.alerts_text {
+    display: flex;
+    margin: 0 auto;
+    width: 90.507246vw;
+    height: 27.294686vw;
+    padding-top: 13.043478vw;
+
+    .alerts_box {
+        margin: 0 auto;
+        width: 85.507246vw;
+        height: 27.294686vw;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        font-size: 4.347826vw;
+        border-bottom: 1px solid #e7e7e7;
+
+        .alerts_left {
+            width: 2.657005vw;
+            line-height: 5.31401vw;
+            font-size: 4.347826vw;
+            font-weight: 700;
+            color: #f61b1b;
+            line-height: 42px;
+            margin-right: 2.415459vw;
+        }
+
+        .alerts_content {
+            flex: 1;
+            height: 100%;
+
+            .alerts_mgb {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                word-break: break-all;
+                margin-right: 2.415459vw;
+                margin-bottom: 2.415459vw;
+                font-size: 4.10628vw;
+            }
+
+            .alerts_gray {
+                color: #999;
+                margin-right: 4.830918vw;
+
+                span {
+                    margin-right: 2.415459vw;
+                }
+            }
+        }
+    }
+
+    .alerts_image {
+        width: 26.570048vw;
+        height: 17.874396vw;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+        }
+    }
+}

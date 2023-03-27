@@ -84,25 +84,19 @@ function Home(props) {
         <div styleName="a">
           {travelList.slice(0, 3).map((dt) => {
             return (
-              <div styleName="alerts_text">
+              <div styleName="alerts_text" key={dt.index}>
                 <div styleName="alerts_box">
-                  <div styleName="alerts_left">1</div>
+                  <div styleName="alerts_left">{dt.index}</div>
                   <div styleName="alerts_content">
-                    <div styleName="alerts_mgb">
-                      五一”假期7座小型客车免费通行全国收费公路五一”假期
-                      7座小型客车免费通行全国收费公路五一”假期7座小型客车免
-                      费通行全国收费公路五一”假期7座小型客车免费通行全国收费公路
-                    </div>
+                    <div styleName="alerts_mgb">{dt.title}</div>
                     <div styleName="alerts_gray">
-                      <span>澎湃新闻</span>2222
+                      <span>{dt.from}</span>
+                      {dt.date}
                     </div>
                   </div>
                 </div>
                 <div styleName="alerts_image">
-                  <img
-                    src="http://a.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a292d2472199d25bc315d607c7c.jpg"
-                    alt=""
-                  />
+                  <img src={dt.imgSrc} alt="" />
                 </div>
               </div>
             );
