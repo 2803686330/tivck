@@ -1,9 +1,11 @@
+import React, { useEffect, useState } from 'react';
 import { Switch } from 'antd-mobile';
-import React, { useEffect } from 'react';
 import './styles.less';
 import { QIcon } from '@@@'; //引入icon
 import Qswiper from './components/Qswiper';
+import Qcalender from './components/Qcalender';
 import { connect } from 'dva';
+import { history } from 'umi';
 
 export default connect(({ home }) => {
   return {
@@ -13,6 +15,7 @@ export default connect(({ home }) => {
 function Home(props) {
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_epgecaxqewt.js'; //icon图标链接
   const { dispatch, travelList } = props;
+  const [ishow, setIshow] = useState(false); //控制日期状态
   const trList = async () => {
     //列表数据
     await dispatch({
@@ -22,6 +25,12 @@ function Home(props) {
   useEffect(() => {
     trList();
   }, []);
+  const onClick = () => {
+    history.push('/info'); //跳转资讯
+  };
+  const onCLick1 = () => {
+    setIshow(true);
+  };
   return (
     <div styleName="app">
       <div styleName="app_box">
@@ -45,7 +54,7 @@ function Home(props) {
               <li>上海</li>
             </ul>
             {/* 选择日期 */}
-            <div styleName="dateBox">
+            <div styleName="dateBox" onClick={onCLick1}>
               2023-03-24 <span>周五(今天)</span>
             </div>
             {/* 状态处 */}
@@ -71,8 +80,8 @@ function Home(props) {
         {/* 头部 */}
         <div styleName="alerts_top">
           出行快讯
-          <div styleName="alerts_more">
-            更多{' '}
+          <div styleName="alerts_more" onClick={onClick}>
+            更多
             <QIcon
               scriptUrl={scriptUrl}
               type={'icon-arrow-right'}
@@ -103,6 +112,12 @@ function Home(props) {
           })}
         </div>
       </div>
+      <Qcalender
+        styleName="calen"
+        ishow={ishow}
+        setIshow={setIshow}
+        style={{ display: ishow ? 'block' : 'none' }}
+      />
     </div>
   );
 }

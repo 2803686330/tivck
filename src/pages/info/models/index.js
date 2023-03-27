@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import api from '@/services';
-import { history } from 'umi';
-import { Toast } from 'antd-mobile';
 
 export default {
   namespace: 'info',
@@ -20,7 +18,6 @@ export default {
   },
 
   effects: {
-    // 登录
     *fetchTravelList({ payload }, { call, put }) {
       const res = yield call(api.getTravelList, payload);
       yield put({

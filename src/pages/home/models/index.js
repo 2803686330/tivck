@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import api from '@/services';
-import { history } from 'umi';
-import { Toast } from 'antd-mobile';
 
 export default {
   namespace: 'home',
