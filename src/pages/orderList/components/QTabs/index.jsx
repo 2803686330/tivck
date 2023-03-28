@@ -10,7 +10,6 @@ export default connect(({ orderList }) => {
 })(QTabs);
 function QTabs(props) {
   const { className = '', dispatch, orderList } = props;
-  const [status, setStatus] = useState(0);
   const arr = [
     { title: '全部', key: 0 },
     { title: '待出行', key: 1 },
@@ -19,22 +18,22 @@ function QTabs(props) {
   ];
 
   const onChange = (opt) => {
-    setStatus(opt);
-    ordeList();
+    console.log(opt);
+    ordeList(opt);
   };
 
-  const ordeList = () => {
+  const ordeList = (opt) => {
     dispatch({
       type: 'orderList/fetchOrderList',
       payload: {
         count: 0,
-        status,
+        status: JSON.parse(opt),
       },
     });
   };
 
   useEffect(() => {
-    ordeList();
+    ordeList(0);
   }, []);
   return (
     <Tabs
