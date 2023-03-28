@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'antd-mobile';
 import cs from 'classnames';
+import moment from 'moment';
 import './styles.less';
 function Qcalender(props) {
-  const { className = '', style = {}, setIshow, ishow } = props;
-  const [title, setTitle] = useState();
-  const [time, setTime] = useState(new Date());
-  const [r, setR] = useState();
+  const { className = '', style = {}, setIshow, ishow, time, setTime } = props;
+  const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
   const onChange = (val) => {
+    const value = [moment(val).format('YYYY-MM-DD'), weeks[moment(val).day()]];
+    setTime(value);
     setIshow(!ishow);
-    const time = val;
-    const year = time.getFullYear();
-    const month = time.getMonth() + 1;
-    const data = time.getDate();
-    const week = time.getDay();
-    const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-    setTitle(`${year}-${month}-${data}`);
-    setR(`${weeks[week]}`);
   };
 
   function getNowFormatDate() {
@@ -28,16 +22,6 @@ function Qcalender(props) {
     if (strDate < 10) strDate = `0${strDate}`;
     return `${year}-${month}-${strDate}`;
   }
-
-  useEffect(() => {
-    const year = time.getFullYear(); //年
-    const month = time.getMonth() + 1; //月
-    const data = time.getDate(); //日
-    const week = time.getDay(); //星期
-    const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-    setTitle(`${year}-${month}-${data}`);
-    setR(`${weeks[week]}(今天)`);
-  }, []);
 
   return (
     <Calendar

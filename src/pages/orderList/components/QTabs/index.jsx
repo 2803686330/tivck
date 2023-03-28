@@ -3,13 +3,14 @@ import { Tabs } from 'antd-mobile';
 import cs from 'classnames';
 import { connect } from 'dva';
 import './styles.less';
-export default connect(({ orderList }) => {
+export default connect(({ orderList, loading }) => {
   return {
     orderList: orderList.setOrderList,
+    loading: !!loading.effects['orderList/fetchOrderList'],
   };
 })(QTabs);
 function QTabs(props) {
-  const { className = '', dispatch, orderList } = props;
+  const { className = '', dispatch, orderList, loading } = props;
   const arr = [
     { title: '全部', key: 0 },
     { title: '待出行', key: 1 },
@@ -22,8 +23,8 @@ function QTabs(props) {
     ordeList(opt);
   };
 
-  const ordeList = (opt) => {
-    dispatch({
+  const ordeList = async (opt) => {
+    await dispatch({
       type: 'orderList/fetchOrderList',
       payload: {
         count: 0,
@@ -45,6 +46,7 @@ function QTabs(props) {
         '--active-title-color': '#1ba9ba',
         '--title-font-size': '3.623188vw',
       }}
+      loading={loading}
     >
       {arr.map((dt) => {
         return (

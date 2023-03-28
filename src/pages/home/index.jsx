@@ -6,6 +6,7 @@ import Qswiper from './components/Qswiper';
 import Qcalender from './components/Qcalender';
 import { connect } from 'dva';
 import { history } from 'umi';
+import moment from 'moment';
 
 export default connect(({ home }) => {
   return {
@@ -15,6 +16,10 @@ export default connect(({ home }) => {
 function Home(props) {
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_epgecaxqewt.js'; //icon图标链接
   const { dispatch, travelList } = props;
+  const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  const [time, setTime] = useState(() => {
+    return [moment().format('YYYY-MM-DD'), weeks[moment().day()]];
+  });
   const [ishow, setIshow] = useState(false); //控制日期状态
   const trList = async () => {
     //列表数据
@@ -55,7 +60,8 @@ function Home(props) {
             </ul>
             {/* 选择日期 */}
             <div styleName="dateBox" onClick={onCLick1}>
-              2023-03-24 <span>周五(今天)</span>
+              {time}
+              {/* 2023-03-24 <span>周五(今天)</span> */}
             </div>
             {/* 状态处 */}
             <ul styleName="statusBox">
@@ -117,6 +123,8 @@ function Home(props) {
         ishow={ishow}
         setIshow={setIshow}
         style={{ display: ishow ? 'block' : 'none' }}
+        time={time}
+        setTime={setTime}
       />
     </div>
   );
