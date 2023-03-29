@@ -4,7 +4,7 @@ import cs from 'classnames';
 import moment from 'moment';
 import './styles.less';
 function Qcalender(props) {
-  const { className = '', style = {}, setIshow, ishow, time, setTime } = props;
+  const { className = '', style = {}, setIshow, ishow, setTime } = props;
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
   const onChange = (val) => {

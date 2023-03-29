@@ -10,7 +10,10 @@ export default [
       { path: '/user/reg', component: './reg', title: '注册' },
     ],
   },
-
+  {
+    path: '/info',
+    routes: [{ path: '/info', component: './info', title: 'info' }],
+  },
   // 其他路由
   {
     path: '/',

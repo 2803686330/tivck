@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import './styles.less';
-import { QHead, QIcon } from '@@@';
-import { Input } from 'antd-mobile';
+import { QIcon } from '@@@';
+import { QIndexBar } from './components/index';
 import { connect } from 'dva';
+import { history } from 'umi';
 
 export default connect(({ city }) => {
   return {
     hotCities: city.hotCities, //热门城市
+    leftcity: city.leftcity,
   };
 })(City);
 function City(props) {
-  const { dispatch, hotCities } = props;
+  const { dispatch, hotCities, leftcity } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_24dk9yrd3f5.js'; //icon图标链接
   const timeDate = new Date().getTime(); //时间戳
   useEffect(() => {
@@ -19,6 +21,23 @@ function City(props) {
       payload: `_${timeDate}`,
     });
   }, []);
+
+  const onCLick = (dt) => {
+    const { name } = dt;
+    // 判断点击的是左边还是右边的城市
+    if (localStorage.getItem('name') === '') {
+      dispatch({
+        type: 'city/fetchleftcity',
+        payload: name,
+      });
+    } else {
+      dispatch({
+        type: 'city/fetchrightcity',
+        payload: name,
+      });
+    }
+    history.push('/');
+  };
 
   return (
     <div styleName="app">
@@ -62,9 +81,17 @@ function City(props) {
         <div styleName="title_rnhd6">热门</div>
         <div styleName="hot_citys">
           {hotCities.map((dt, index) => {
-            return <div key={index}>{dt.name}</div>;
+            return (
+              <div key={index} onClick={() => onCLick(dt)}>
+                {dt.name}
+              </div>
+            );
           })}
         </div>
+      </div>
+      {/* 全部城市 */}
+      <div styleName="hot_city">
+        <QIndexBar />
       </div>
     </div>
   );

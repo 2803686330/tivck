@@ -88,7 +88,9 @@ function MainLayout(props) {
   };
   return (
     <div styleName="app">
-      <section>{props.children}</section>
+      <section style={{ height: '100%', overflow: 'hidden' }}>
+        {props.children}
+      </section>
       <footer>
         <TabBar activeKey={activeKey} onChange={setRouteActive}>
           {tabs.map((item) => (

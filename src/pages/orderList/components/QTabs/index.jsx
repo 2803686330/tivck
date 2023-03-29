@@ -54,7 +54,7 @@ function QTabs(props) {
             title={dt.title}
             key={dt.key}
             style={{ background: 'white' }}
-            styleName="adm-tabs-header"
+            // styleName="adm-tabs-header"
           >
             {orderList.map((dt) => {
               return (

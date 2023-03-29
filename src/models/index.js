@@ -32,7 +32,7 @@ export default {
         });
         localStorage.setItem('userInfo', JSON.stringify(res.data));
         localStorage.setItem('token', res.data.token);
-        history.push('/home');
+        history.push('/');
       }
     },
   },

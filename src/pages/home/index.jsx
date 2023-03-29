@@ -2,39 +2,62 @@ import React, { useEffect, useState } from 'react';
 import { Switch } from 'antd-mobile';
 import './styles.less';
 import { QIcon } from '@@@'; //引入icon
-import Qswiper from './components/Qswiper';
-import Qcalender from './components/Qcalender';
+import { Qswiper, Qcalender } from './components';
 import { connect } from 'dva';
 import { history } from 'umi';
 import moment from 'moment';
 
-export default connect(({ home }) => {
+export default connect(({ home, city }) => {
   return {
-    travelList: home.travelList,
+    travelList: home.travelList, //出行快讯3条
+    leftcity: city.leftcity, //左边城市
+    rightcity: city.rightcity, //右边城市
   };
 })(Home);
 function Home(props) {
+  const { dispatch, travelList, leftcity, rightcity } = props;
+  const [city, setCity] = useState(() => {
+    return leftcity ? leftcity : '天津';
+  }); //城市
+  const [city1, setCity1] = useState(() => {
+    return rightcity ? rightcity : '上海';
+  }); //城市
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_epgecaxqewt.js'; //icon图标链接
-  const { dispatch, travelList } = props;
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   const [time, setTime] = useState(() => {
     return [moment().format('YYYY-MM-DD'), weeks[moment().day()]];
   });
   const [ishow, setIshow] = useState(false); //控制日期状态
   const trList = async () => {
-    //列表数据
     await dispatch({
       type: 'home/fetchTravelList',
     });
-  };
+  }; //列表数据
+
   useEffect(() => {
     trList();
   }, []);
+
+  const onCity = () => {
+    localStorage.setItem('name', '');
+    history.push('/city');
+  }; //跳转城市页面
+
+  const onCity1 = () => {
+    localStorage.setItem('name', '11');
+    history.push('/city');
+  }; //跳转城市页面
+
   const onClick = () => {
     history.push('/info'); //跳转资讯
   };
   const onCLick1 = () => {
-    setIshow(true);
+    setIshow(true); //日期
+  };
+  // 城市切换
+  const handoff = () => {
+    setCity(city1);
+    setCity1(city);
   };
   return (
     <div styleName="app">
@@ -47,8 +70,8 @@ function Home(props) {
           <div styleName="ticketBox">
             {/* 选择地点 */}
             <ul styleName="ticketOne">
-              <li>天津</li>
-              <li>
+              <li onClick={onCity}>{city}</li>
+              <li onClick={handoff}>
                 <QIcon
                   scriptUrl={scriptUrl}
                   type={'icon-nav_icon_switch'}
@@ -56,12 +79,11 @@ function Home(props) {
                   color={'#ccc'}
                 />
               </li>
-              <li>上海</li>
+              <li onClick={onCity1}>{city1}</li>
             </ul>
             {/* 选择日期 */}
             <div styleName="dateBox" onClick={onCLick1}>
               {time}
-              {/* 2023-03-24 <span>周五(今天)</span> */}
             </div>
             {/* 状态处 */}
             <ul styleName="statusBox">
@@ -118,6 +140,7 @@ function Home(props) {
           })}
         </div>
       </div>
+      {/* 日期组件 */}
       <Qcalender
         styleName="calen"
         ishow={ishow}

@@ -3,7 +3,6 @@ import { Form, Input, Button } from 'antd-mobile';
 import './styles.less';
 import { connect } from 'dva';
 import { history } from 'umi';
-
 export default connect((state) => {
   return {};
 })(Qfrom);
@@ -24,7 +23,7 @@ function Qfrom(props) {
         type: 'index/fetchLogin',
         payload: values,
       });
-      history.push('/home');
+      history.push('/');
     }
   };
   //   判断二次密码是否正确
