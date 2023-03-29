@@ -8,20 +8,11 @@ function Qcalender(props) {
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
   const onChange = (val) => {
+    // 转换时间
     const value = [moment(val).format('YYYY-MM-DD'), weeks[moment(val).day()]];
-    setTime(value);
-    setIshow(!ishow);
+    setTime(value); //将时间传父组件
+    setIshow(!ishow); //关闭时间框
   };
-
-  function getNowFormatDate() {
-    let date = new Date(),
-      year = date.getFullYear(),
-      month = date.getMonth() + 1,
-      strDate = date.getDate();
-    if (month < 10) month = `0${month}`;
-    if (strDate < 10) strDate = `0${strDate}`;
-    return `${year}-${month}-${strDate}`;
-  }
 
   return (
     <Calendar
