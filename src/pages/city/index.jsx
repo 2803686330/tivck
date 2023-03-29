@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.less';
 import { QHead, QIcon } from '@@@';
 import { Input } from 'antd-mobile';
+import { connect } from 'dva';
 
-function City() {
+export default connect(({ city }) => {
+  return {
+    hotCities: city.hotCities, //热门城市
+  };
+})(City);
+function City(props) {
+  const { dispatch, hotCities } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_24dk9yrd3f5.js'; //icon图标链接
+  const timeDate = new Date().getTime(); //时间戳
+  useEffect(() => {
+    dispatch({
+      type: 'city/fetchLogin',
+      payload: `_${timeDate}`,
+    });
+  }, []);
+
   return (
     <div styleName="app">
       {/* 头部 */}
@@ -46,19 +61,11 @@ function City() {
       <div styleName="hot_city_items">
         <div styleName="title_rnhd6">热门</div>
         <div styleName="hot_citys">
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
+          {hotCities.map((dt, index) => {
+            return <div key={index}>{dt.name}</div>;
+          })}
         </div>
       </div>
     </div>
   );
 }
-
-export default City;
