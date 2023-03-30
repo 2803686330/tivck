@@ -59,6 +59,10 @@ function Home(props) {
     setCity(city1);
     setCity1(city);
   };
+  // 搜索
+  const onSearch = (city, city1) => {
+    history.push(`/query?from=${city}&to=${city1}`);
+  };
   return (
     <div styleName="app">
       <div styleName="app_box">
@@ -94,7 +98,7 @@ function Home(props) {
             </ul>
             {/* 按钮处 */}
             <div styleName="buttonBox">
-              <button>搜索</button>
+              <button onClick={() => onSearch(city, city1)}>搜索</button>
             </div>
           </div>
         </div>

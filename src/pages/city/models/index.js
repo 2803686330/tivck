@@ -9,8 +9,8 @@ export default {
   state: {
     hotCities: [], //热门城市
     cityList: [], //所有城市
-    leftcity: '', //左边城市
-    rightcity: '', //右边城市
+    leftcity: '天津', //左边城市
+    rightcity: '上海', //右边城市
   },
 
   reducers: {

@@ -23,6 +23,7 @@ function QHead(props) {
         onBack={back}
         style={{ ...style, background, color, fontSize }}
         {...item}
+        
       >
         {title}
       </NavBar>
