@@ -9,6 +9,7 @@ export default connect((state) => {
 })(Query);
 
 function Query(props) {
+  console.log(1);
   const { from, to } = props.location.query;
   // console.log(from, to);
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_znmv0t3rvd.js'; //icon图标链接
