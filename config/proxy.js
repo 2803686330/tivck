@@ -1,15 +1,15 @@
-import config from '../src/cfgs/common'
+import config from '../src/cfgs/common';
 
-const { ENV } = process.env
+const { ENV } = process.env;
 
 export default {
   dev: {
-    '/dev': {
+    '/de': {
       target: config.localhostUrl[ENV],
       changeOrigin: true,
       pathRewrite: {
-        '^/dev': ''
+        '^/dev': '',
       },
     },
   },
-}
+};

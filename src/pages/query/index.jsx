@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QHead, QIcon } from '@@@';
 import './styles.less';
 import { list } from './list';
 import moment from 'moment';
 import { connect } from 'dva';
-export default connect((state) => {
-  return {};
+import index from '../detail';
+export default connect(({ query }) => {
+  return {
+    queryList: query.queryList, //列表数据
+  };
 })(Query);
 
 function Query(props) {
-  const { from, to } = props.location.query;
-  // console.log(from, to);
+  const { dispatch, queryList } = props;
+  const { from, to, highSpeed, date } = props.location.query;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_znmv0t3rvd.js'; //icon图标链接
+  useEffect(() => {
+    dispatch({
+      type: 'query/fetchQuery',
+      payload: {
+        date,
+        from,
+        haveTicket: false,
+        highSpeed: JSON.parse(highSpeed),
+        timeSort: 1,
+        to,
+      },
+    });
+  }, []);
   return (
     <div styleName="query_box">
       {/* 头部 */}
@@ -38,34 +54,38 @@ function Query(props) {
           <span styleName="nav_right">后一天</span>
         </div>
         <div styleName="list_kfa">
-          <li styleName="list_item_itdav">
-            <span styleName="item-time_itdav_1">
-              <span>06:20</span>
-              <br />
-              <span>06:20</span>
-            </span>
-            <span styleName="item-time_itdav_2">
-              <span>
-                <i styleName="train_station_itdav">始</i>
-                北京南
-              </span>
-              <br />
-              <span>
-                <i styleName="train_station_itdav1">终</i>
-                北京南
-              </span>
-            </span>
-            <span styleName="item-time_itdav_3">
-              <span>G103</span>
-              <br />
-              <span>06:20</span>
-            </span>
-            <span styleName="item-time_itdav_4">
-              <span>￥G103</span>
-              <br />
-              <span>已停售</span>
-            </span>
-          </li>
+          {queryList.map((dt, index) => {
+            return (
+              <li styleName="list_item_itdav" key={index}>
+                <span styleName="item-time_itdav_1">
+                  <span>{dt.dTime}</span>
+                  <br />
+                  <span>{dt.aTime}</span>
+                </span>
+                <span styleName="item-time_itdav_2">
+                  <span>
+                    <i styleName="train_station_itdav">始</i>
+                    {dt.dStation}
+                  </span>
+                  <br />
+                  <span>
+                    <i styleName="train_station_itdav1">终</i>
+                    {dt.aStation}
+                  </span>
+                </span>
+                <span styleName="item-time_itdav_3">
+                  <span>{dt.trainNumber}</span>
+                  <br />
+                  <span>{dt.time}</span>
+                </span>
+                <span styleName="item-time_itdav_4">
+                  <span>{dt.priceMsg}</span>
+                  <br />
+                  <span>{dt.trainShowDesc}</span>
+                </span>
+              </li>
+            );
+          })}
         </div>
       </div>
       <div styleName="bottom_filters">

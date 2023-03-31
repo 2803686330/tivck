@@ -9,7 +9,7 @@ import moment from 'moment';
 
 export default connect(({ home, city }) => {
   return {
-    travelList: home.travelList, //出行快讯3条
+    travelList: home.travelList, //出行快讯
     leftcity: city.leftcity, //左边城市
     rightcity: city.rightcity, //右边城市
   };
@@ -22,47 +22,37 @@ function Home(props) {
   const [city1, setCity1] = useState(() => {
     return rightcity ? rightcity : '上海';
   }); //城市
+  const date = new Date().getTime(); //时间戳
+  const [highSpeed, setHighSpeed] = useState(false);
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_epgecaxqewt.js'; //icon图标链接
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   const [time, setTime] = useState(() => {
     return [moment().format('YYYY-MM-DD'), weeks[moment().day()]];
   });
   const [ishow, setIshow] = useState(false); //控制日期状态
-  const trList = async () => {
-    await dispatch({
-      type: 'home/fetchTravelList',
-    });
-  }; //列表数据
-
+  const trList = async () => await dispatch({ type: 'home/fetchTravelList' }); //列表数据
   useEffect(() => {
     trList();
   }, []);
-
   const onCity = () => {
     localStorage.setItem('name', '');
     history.push('/city');
   }; //跳转城市页面
-
   const onCity1 = () => {
     localStorage.setItem('name', '11');
     history.push('/city');
   }; //跳转城市页面
-
-  const onClick = () => {
-    history.push('/info'); //跳转资讯
-  };
-  const onCLick1 = () => {
-    setIshow(true); //日期
-  };
-  // 城市切换
+  const onClick = () => history.push('/info'); //跳转资讯
+  const onCLick1 = () => setIshow(true); //日期
   const handoff = () => {
     setCity(city1);
     setCity1(city);
-  };
-  // 搜索
-  const onSearch = (city, city1) => {
-    history.push(`/query?from=${city}&to=${city1}`);
-  };
+  }; // 城市切换
+  const onSearch = (city, city1) =>
+    history.push(
+      `/query?from=${city}&to=${city1}&highSpeed=${highSpeed}&date=${date}`,
+    ); // 搜索跳转
+  const onChange = (opt) => setHighSpeed(opt); //高铁开关
   return (
     <div styleName="app">
       <div styleName="app_box">
@@ -93,7 +83,7 @@ function Home(props) {
             <ul styleName="statusBox">
               <li>只看高铁/动车</li>
               <li>
-                <Switch />
+                <Switch onChange={onChange} />
               </li>
             </ul>
             {/* 按钮处 */}

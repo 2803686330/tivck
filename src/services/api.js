@@ -4,4 +4,5 @@ export default {
   travelList: `/api/rest/travelList`, //出行快讯接口
   orderList: `/api/rest/orderList`, //订单
   cities: `/api/rest/cities`, //城市
+  query: `/api/rest/query`, //query 购票
 };

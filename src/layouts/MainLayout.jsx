@@ -88,7 +88,7 @@ function MainLayout(props) {
   };
   return (
     <div styleName="app">
-      <section style={{ height: '100%', overflow: 'hidden' }}>
+      <section style={{ height: '100%', overflow: 'scroll' }}>
         {props.children}
       </section>
       <footer>
