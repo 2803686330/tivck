@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { QIcon, QHead } from '@/components';
+import { QIcon, QHead } from '@@@';
 import { Collapse } from 'antd-mobile';
 import { connect } from 'dva';
 import { history } from 'umi';
@@ -10,9 +10,9 @@ export default connect(({ ticket }) => {
     candidates: ticket.candidates,
   };
 })(Ticket);
-
 function Ticket(props) {
   const { dispatch, candidates } = props;
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_znmv0t3rvd.js'; //icon图标链接
   const { aStation, dStation, trainNumber, date, time, dTime, aTime } =
     props.location.query;
   // 返回上一页
@@ -34,18 +34,20 @@ function Ticket(props) {
   return (
     <div styleName="ticket_box">
       <div styleName="ticket_head">
-        <QIcon
-          type="icon-xiangzuo-copy" //icon图标
-          fontSize="40px" //设置icon图标大小
-          onClick={onIcon} //icon的点击事件
-        />
         <QHead
-          width="100%"
-          title={trainNumber} //头部标题文字
-          fontWeight="bold" //文字加粗
-          margin="0 30px 0 0" //设置外边距
-          fontSize="18px" //设置文字大小
-          color="#fff" //设置文字颜色
+          title={trainNumber}
+          color={'#fff'}
+          fontSize={'6.347826vw'}
+          background={'#1ba9ba'}
+          // styleName="app"
+          backArrow={
+            <QIcon
+              scriptUrl={scriptUrl}
+              type={'icon-arrow-left'}
+              fontSize={'5.415459vw'}
+              color={'#fff'}
+            />
+          }
         />
       </div>
       <div styleName="ticket_nav">

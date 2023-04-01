@@ -76,7 +76,6 @@ function Query(props) {
         </div>
         <div styleName="list_kfa">
           {queryList.map((dt, index) => {
-            console.log(dt);
             return (
               <li
                 styleName="list_item_itdav"
