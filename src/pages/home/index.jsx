@@ -22,13 +22,13 @@ function Home(props) {
   const [city1, setCity1] = useState(() => {
     return rightcity ? rightcity : '上海';
   }); //城市
-  const date = new Date().getTime(); //时间戳
   const [highSpeed, setHighSpeed] = useState(false);
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_epgecaxqewt.js'; //icon图标链接
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   const [time, setTime] = useState(() => {
     return [moment().format('YYYY-MM-DD'), weeks[moment().day()]];
   });
+  const date = moment(time[0]).valueOf(); //选择购票时间戳
   const [ishow, setIshow] = useState(false); //控制日期状态
   const trList = async () => await dispatch({ type: 'home/fetchTravelList' }); //列表数据
   useEffect(() => {

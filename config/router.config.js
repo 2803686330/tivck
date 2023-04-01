@@ -28,6 +28,14 @@ export default [
       { path: '/query?:id', component: './query', title: 'query' },
     ],
   },
+  // 购票详情
+  {
+    path: '/ticket',
+    routes: [
+      { path: '/ticket', component: './ticket', title: 'ticket' },
+      { path: '/ticket?:id', component: './ticket', title: 'ticket' },
+    ],
+  },
   // 其他路由
   {
     path: '/',
