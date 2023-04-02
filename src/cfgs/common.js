@@ -10,7 +10,7 @@ export default {
   },
   // 远程调试地址
   requestUrl: {
-    dev: '//10.161.54.45:3000',
+    dev: '//10.161.54.4:3000',
     dev2: '//test-front-2.wandu.cn/cps',
     dev3: '//testzeus4.666shuwu.cn/cps',
     dev4: '//test-front-3.wandu.cn/cps',
@@ -22,7 +22,7 @@ export default {
   // 本地调试地址
   localhostUrl: {
     // dev: 'http://testzeus4.666shuwu.cn/cps',
-    start: 'http://10.161.54.45:3000',
+    start: 'http://10.161.54.4:3000',
     start2: 'http://test-front-2.wandu.cn/cps',
     start3: 'http://testzeus4.666shuwu.cn/cps',
     start4: 'http://test-front-3.wandu.cn/cps',

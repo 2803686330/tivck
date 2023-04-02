@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { QIcon, QHead } from '@@@';
+import { QIcon, QHead, QButton } from '@@@';
 import { Popup } from 'antd-mobile';
 import { history } from 'umi';
 import moment from 'moment';
@@ -7,8 +7,7 @@ import './styles.less';
 function Order(props) {
   const { aStation, dStation, trainNumber, date, time, dTime, aTime, type } =
     props.location.query;
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_znmv0t3rvd.js'; //icon图标链接
-
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_fyuc8am7i5g.js'; //icon图标链接
   const [visible1, setVisible1] = useState(false);
   // 返回上一级
   const onIcon = () => {
@@ -73,10 +72,27 @@ function Order(props) {
       </div>
       <div styleName="account_bjdsa">
         <div styleName="price_bjdsa">
-          <div styleName="money_bjdsa">200</div>
+          <div styleName="money_bjdsa">
+            <span>￥200</span>
+            <QIcon
+              type={
+                visible1 === true ? 'icon-xiangshang' : 'icon-xiangxiazhankai'
+              }
+              fontSize="15px"
+              onClick={onPopup}
+            />
+          </div>
           <div styleName="money_bjdsa1">支付金额</div>
         </div>
-        <button styleName="adm_button">提交订单</button>
+        <QButton
+          color="#fff" //设置按钮文字颜色
+          title="提交订单" //设置按钮文字
+          width="110px" //设置按钮宽度
+          height="40px" //设置按钮高度
+          borderRadius="5px" //设置按钮圆角
+          background="#1BA9BA" //设置按钮背景
+          styleName="buttons"
+        />
       </div>
       <Popup
         style={{ display: visible1 === true ? 'block' : 'none' }}
