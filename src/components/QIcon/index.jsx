@@ -10,7 +10,7 @@ export default function QIcon(props) {
     type = 'icon-company',
     style = {},
     className = '',
-    scriptUrl = '//at.alicdn.com/t/c/font_3885987_j8xrntk3iq.js',
+    scriptUrl = '//at.alicdn.com/t/c/font3885987_j8xrntk3iq.js',
     ...item
   } = props;
   const IconFont = createFromIconfontCN({
