@@ -44,6 +44,18 @@ export default [
       { path: '/order?:id', component: './order', title: 'order' },
     ],
   },
+  // 订单填写
+  {
+    path: '/passengers',
+    routes: [
+      { path: '/passengers', component: './passengers', title: 'passengers' },
+      {
+        path: '/passengers?:id',
+        component: './passengers',
+        title: 'passengers',
+      },
+    ],
+  },
   // 其他路由
   {
     path: '/',

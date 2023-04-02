@@ -1,0 +1,137 @@
+.passengers_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .passengers_head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background: #1BA9BA;
+        border: 1px solid #1BA9BA;
+    }
+
+    .passengers_middle {
+        flex: 1;
+        overflow: scroll;
+
+        .passengers_info {
+            width: 100%;
+            height: 130px;
+            display: flex;
+            background: #1BA9BA;
+            border: 0;
+
+            div {
+                color: white;
+                font-weight: 600;
+                font-size: 35px;
+
+                &:nth-child(1) {
+                    margin: 20px;
+                }
+
+                &:nth-child(2) {
+                    margin: 30px 30px;
+                }
+            }
+        }
+
+        .passengers_add {
+            width: 95%;
+            position: relative;
+
+            div {
+                &:nth-child(1) {
+                    position: absolute;
+                    left: 245px;
+                    top: 25px;
+                    z-index: 999;
+                }
+            }
+        }
+
+        .passengers_list {
+            width: 95%;
+            background: white;
+            margin: 0 20px;
+            border-radius: 10px;
+            position: relative;
+
+            dl {
+                width: 100%;
+                height: 100px;
+                padding-top: 25px;
+                display: flex;
+                align-items: center;
+
+                dt {
+                    &:nth-child(1) {
+                        margin: 0 15px;
+                    }
+
+                    &:nth-child(2) {
+                        flex: 1;
+                        margin-left: 30px;
+
+                        div {
+                            &:nth-child(1) {
+                                display: flex;
+
+                                div {
+                                    &:nth-child(1) {
+                                        font-size: 30px;
+                                        font-weight: 600;
+                                    }
+
+                                    &:nth-child(2) {
+                                        color: #999;
+                                        font-size: 20px;
+                                        padding: 5px;
+                                        margin: 0 20px;
+                                        border: 1px solid #ccc;
+                                    }
+                                }
+                            }
+
+                            &:nth-child(2) {
+                                font-size: 20px;
+                                color: #999;
+                                margin: 5px 0;
+                            }
+                        }
+                    }
+                }
+
+                dd {
+                    margin: 20px 0;
+                }
+            }
+        }
+
+        .bapw {
+            width: 100%;
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 85px;
+            color: #999;
+        }
+    }
+
+    .button {
+        width: 95%;
+        border-radius: 50px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:global(.adm-list-body) {
+    border-radius: 10px;
+}
