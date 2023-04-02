@@ -36,6 +36,14 @@ export default [
       { path: '/ticket?:id', component: './ticket', title: 'ticket' },
     ],
   },
+  // 订单填写
+  {
+    path: '/order',
+    routes: [
+      { path: '/order', component: './order', title: 'order' },
+      { path: '/order?:id', component: './order', title: 'order' },
+    ],
+  },
   // 其他路由
   {
     path: '/',

@@ -1,0 +1,240 @@
+.order_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .order_head {
+        width: 100%;
+        background: #1BA9BA;
+        height: 10.628019vw;
+        z-index: 1000;
+    }
+
+    .order_center {
+        flex: 1;
+        overflow: scroll;
+    }
+
+    .order_time {
+        width: 100%;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        background: white;
+
+        div {
+            flex: 1;
+        }
+
+        .time_left {
+            width: 100%;
+            height: 100%;
+
+            div {
+                margin: 0 30px;
+
+                &:nth-child(1) {
+                    font-size: 35px;
+                    padding-top: 50px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 38px;
+                    font-weight: 600;
+                    padding-top: 10px;
+                }
+
+                &:nth-child(3) {
+                    font-size: 18px;
+                    padding-top: 10px;
+                }
+            }
+        }
+
+        .time_middle {
+            width: 100%;
+            height: 100%;
+
+            div {
+                text-align: center;
+
+                &:nth-child(1) {
+                    font-size: 25px;
+                    padding-top: 60px;
+                    color: #999;
+                }
+
+                &:nth-child(2) {
+                    padding: 3.140097vw 0;
+
+                }
+
+                &:nth-child(3) {
+                    font-size: 18px;
+                    padding-top: 20px;
+                }
+            }
+        }
+
+        .time_right {
+            width: 100%;
+            height: 100%;
+
+            div {
+                text-align: right;
+                margin-right: 30px;
+
+                &:nth-child(1) {
+                    font-size: 35px;
+                    padding-top: 50px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 38px;
+                    font-weight: 600;
+                    padding-top: 10px;
+                }
+
+                &:nth-child(3) {
+                    font-size: 18px;
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+
+    .order_grade {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        background: white;
+        margin: 20px 0;
+
+        div {
+            &:nth-child(1) {
+                margin: 0 30px;
+                font-size: 28px;
+            }
+
+            &:nth-child(2) {
+                flex: 1;
+                text-align: center;
+
+                span {
+                    font-size: 28px;
+
+                    &:nth-child(2) {
+                        font-size: 32px;
+                        padding: 0 20px;
+                        color: #FF9900;
+                    }
+                }
+            }
+        }
+    }
+
+    .order_add {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        background: white;
+        align-items: center;
+
+        div {
+            flex: 1;
+            text-align: center;
+            font-size: 30px;
+            color: #1BA9BA;
+        }
+    }
+
+    .account_bjdsa {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        height: 12.077295vw;
+        z-index: 10;
+        max-width: 130.434783vw;
+        background: #fff;
+        height: 14.492754vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .price_bjdsa {
+            margin-left: 2.415459vw;
+            position: relative;
+
+            .money_bjdsa {
+                line-height: 6.763285vw;
+                margin-top: 0;
+                padding-left: 0;
+                font-weight: normal;
+                color: #ff8205;
+                font-family: PingFangSC-Semibold;
+                font-size: 5.797101vw;
+                text-align: center;
+                min-width: 11.594203vw;
+            }
+
+            .money_bjdsa1 {
+                font-family: PingFangSC-Regular;
+                font-size: 2.415459vw;
+                color: #aaa;
+                text-align: center;
+            }
+        }
+
+        .adm_button {
+            color: #fff;
+            border-color: #1ba9ba;
+            background-color: #1ba9ba;
+            border-radius: 1.449275vw;
+            width: 28.985507vw;
+            margin-right: 2.415459vw;
+        }
+    }
+
+}
+
+.price_info {
+    width: 90%;
+    margin: 10px 20px;
+    font-size: 29px;
+}
+
+.train_info {
+    display: flex;
+    width: 90%;
+    font-size: 27px;
+    margin: 0 20px;
+
+    div {
+        &:nth-child(1) {
+            flex: 1;
+        }
+
+        &:nth-child(2) {
+            span {
+                &:nth-child(1) {
+                    padding: 0 50px;
+                }
+
+                &:nth-child(2) {
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}
+
+:global(.adm-popup-body-position-bottom) {
+    position: fixed;
+    bottom: 120px;
+}
+
+:global(.adm-mask) {
+    top: -120px;
+}

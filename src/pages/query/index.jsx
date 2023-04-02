@@ -40,7 +40,7 @@ function Query(props) {
     1: () => setTimeSort(timeSort ? 0 : 1), //早晚出发
     2: () => setHighSpeed(!highSpeed), //只看高铁
     3: () => setHaveTicket(!haveTicket), //只看有票
-  }; // 策略模式
+  }; // 模式
   const onClick = (id) => buttFn[id](); //调用策略
   // 点击车票跳转传参
   const onInfo = (dt) => {
