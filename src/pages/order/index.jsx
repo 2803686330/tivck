@@ -9,10 +9,6 @@ function Order(props) {
     props.location.query;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_fyuc8am7i5g.js'; //icon图标链接
   const [visible1, setVisible1] = useState(false);
-  // 返回上一级
-  const onIcon = () => {
-    window.history.back(-1);
-  };
   //   弹层显示隐藏
   const onPopup = () => {
     setVisible1(!visible1);
