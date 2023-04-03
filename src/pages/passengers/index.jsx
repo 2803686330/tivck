@@ -14,10 +14,6 @@ function Passengers(props) {
   const { dispatch, passengersList } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_2u5nj3a9qk5.js'; //icon图标链接
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-  // 返回上一级
-  const onIcon = () => {
-    window.history.back(-1);
-  };
   useEffect(() => {
     dispatch({
       type: 'passengers/fetchList',
@@ -43,7 +39,6 @@ function Passengers(props) {
           }
         />
       </div>
-
       <div styleName="passengers_middle">
         <div styleName="passengers_info">
           <img
@@ -54,7 +49,6 @@ function Passengers(props) {
         </div>
         <div styleName="passengers_add">
           <QIcon type="icon-icon_tianjia" fontSize="23px" />
-
           <QButton
             onClick={() => history.push('/passengerDetail')}
             title="新增乘客" //设置按钮文字
