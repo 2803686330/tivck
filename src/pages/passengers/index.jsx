@@ -26,12 +26,13 @@ function Passengers(props) {
 
   return (
     <div styleName="passengers_box">
-      <div styleName="passengers_head">
+      <div styleName="head">
         <QHead
           title={'乘客列表'}
           color={'#fff'}
           fontSize={'6.347826vw'}
           background={'#1ba9ba'}
+          styleName={'top'}
           backArrow={
             <QIcon
               scriptUrl={scriptUrl}
@@ -42,6 +43,7 @@ function Passengers(props) {
           }
         />
       </div>
+
       <div styleName="passengers_middle">
         <div styleName="passengers_info">
           <img
