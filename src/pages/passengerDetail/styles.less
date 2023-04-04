@@ -1,0 +1,90 @@
+.passdetail_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .passdetail_head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background: #1BA9BA;
+        border: 1px solid #1BA9BA;
+    }
+
+    .passdetail_middle {
+        flex: 1;
+        overflow: scroll;
+
+        .passdetail_info {
+            width: 100%;
+            height: 130px;
+            display: flex;
+            background: #1BA9BA;
+            border: 1px solid #1BA9BA;
+
+            div {
+                color: white;
+                font-weight: 600;
+                font-size: 35px;
+
+                &:nth-child(1) {
+                    margin: 20px;
+                }
+
+                &:nth-child(2) {
+                    margin: 30px 30px;
+                }
+            }
+        }
+
+        .passdetail_add {
+            width: 95%;
+            position: relative;
+
+            div {
+                &:nth-child(1) {
+                    position: absolute;
+                    left: 220px;
+                    top: 25px;
+                    z-index: 999;
+                }
+            }
+        }
+    }
+}
+
+.div_foot {
+    font-size: 18px;
+    color: #999;
+}
+
+.button {
+    width: 95%;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+}
+
+.bapw {
+    width: 100%;
+    text-align: center;
+    margin-top: -30px;
+    padding-bottom: 85px;
+    color: #999;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:global(.adm-form) {
+    width: 95%;
+    margin: 0 20px;
+    border-radius: 20px;
+}
+
+:global(.adm-form-item.adm-form-item-horizontal.adm-list-item) {
+    height: 123px;
+}

@@ -56,6 +56,17 @@ export default [
       },
     ],
   },
+  // 新增乘客
+  {
+    path: '/passengerDetail',
+    routes: [
+      {
+        path: '/passengerDetail',
+        component: './passengerDetail',
+        title: 'passengerDetail',
+      },
+    ],
+  },
   // 其他路由
   {
     path: '/',
