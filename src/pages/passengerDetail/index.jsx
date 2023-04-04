@@ -1,19 +1,29 @@
 import React from 'react';
 import { QIcon, QHead, QButton } from '@/components';
-import { Form, Input } from 'antd-mobile';
+import { Form, Input, Toast } from 'antd-mobile';
+import { history } from 'umi';
 import './styles.less';
 function PassengerDetail(props) {
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_fyuc8am7i5g.js'; //icon图标链接
-  // 返回上一级
-  const onIcon = () => {
-    window.history.back(-1);
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_4pauw013d3w.js'; //icon图标链接
+  const onFinish = (values) => {
+    if (values) {
+      Toast.show({
+        //提示
+        icon: 'success',
+        content: '保存成功',
+        duration: 1000,
+      });
+      setTimeout(() => {
+        history.push('/passengers');
+      }, 1000);
+    }
   };
   return (
     <div styleName="passdetail_box">
       <div styleName="passdetail_head">
         <QHead
-          title={'订单填写'}
+          title={'乘客列表'}
           color={'#fff'}
           fontSize={'6.347826vw'}
           background={'#1ba9ba'}
@@ -29,26 +39,30 @@ function PassengerDetail(props) {
       </div>
       <div styleName="passdetail_middle">
         <div styleName="passdetail_info">
-          <img
-            src="http://10.161.54.4:3000/src/pages/user/components/avatar/avatar.svg"
-            alt=""
+          <QIcon //icon引入
+            scriptUrl={scriptUrl}
+            type={'icon-avatar'}
+            fontSize={'8.415459vw'}
+            color={'#fff'}
           />
           <div>{userInfo ? userInfo.username : null}</div>
         </div>
         <div styleName="passdetail_add">
           <div>
-            <QIcon type="icon-zhaoxiangji-copy" fontSize="23px" />
+            <QIcon type="icon-zhaoxiangji" fontSize="20px" />
           </div>
           <QButton
-            title="扫描证件添加" //设置按钮文字
-            height="50px" //设置按钮高度
-            margin="20px 10px" //设置按钮外边距
-            color="#91D6FF" //设置按钮颜色
-            block //设置按钮是否为块元素
+            title="扫描证件添加"
+            height="50px"
+            margin="20px 10px"
+            color="#1ba9ba"
+            block
+            fontSize="14px"
           />
         </div>
         <Form
           layout="horizontal"
+          onFinish={onFinish}
           footer={
             <QButton
               styleName="button"
@@ -62,14 +76,14 @@ function PassengerDetail(props) {
           }
         >
           <Form.Item
-            name="name"
+            name="a"
             label="乘客类型"
             rules={[{ required: true, message: '请选择乘客类型!' }]}
           >
             <Input placeholder="请选择乘客类型" />
           </Form.Item>
           <Form.Item
-            name="name"
+            name="b"
             label="姓名"
             help="详情地址"
             rules={[{ required: true, message: '请选输入乘客姓名!' }]}
@@ -77,21 +91,21 @@ function PassengerDetail(props) {
             <Input placeholder="与乘客证件姓名一致" showCount />
           </Form.Item>
           <Form.Item
-            name="name"
+            name="c"
             label="证件类型"
             rules={[{ required: true, message: '请选择证件类型!' }]}
           >
-            <Input placeholder="请输入姓名" />
+            <Input placeholder="请输入" />
           </Form.Item>
           <Form.Item
-            name="name"
+            name="d"
             label="证件号码"
             rules={[{ required: true, message: '请输入证件号码!' }]}
           >
             <Input placeholder="与乘客证件姓名一致" />
           </Form.Item>
           <Form.Item
-            name="name"
+            name="e"
             label="手机号码"
             rules={[{ required: true, message: '请输入手机号码!' }]}
           >

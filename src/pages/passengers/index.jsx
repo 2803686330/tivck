@@ -12,7 +12,7 @@ export default connect(({ passengers }) => {
 
 function Passengers(props) {
   const { dispatch, passengersList } = props;
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_2u5nj3a9qk5.js'; //icon图标链接
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_4pauw013d3w.js'; //icon图标链接
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   useEffect(() => {
     dispatch({
@@ -41,9 +41,11 @@ function Passengers(props) {
       </div>
       <div styleName="passengers_middle">
         <div styleName="passengers_info">
-          <img
-            src="http://10.161.54.4:3000/src/pages/user/components/avatar/avatar.svg"
-            alt=""
+          <QIcon //icon引入
+            scriptUrl={scriptUrl}
+            type={'icon-avatar'}
+            fontSize={'8.415459vw'}
+            color={'#fff'}
           />
           <div>{userInfo ? userInfo.username : null}</div>
         </div>
