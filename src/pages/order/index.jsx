@@ -11,11 +11,12 @@ function Order(props) {
     props.location.query;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_1u89h7gtca5.js'; //icon图标链接
   const [visible1, setVisible1] = useState(false);
-  const [orderfn, setOrderfn] = useState(false);
+  const [orderfn, setOrderfn] = useState('');
   const onPopup = () => setVisible1(!visible1); // 弹层显示隐藏
   const onPassenger = () => history.push('/passengers'); //跳转
   const onClick = (title) => {
-    setOrderfn(true);
+    console.log(title);
+    setOrderfn(title);
   };
   return (
     <div styleName="order_box">
@@ -81,7 +82,9 @@ function Order(props) {
           </ul>
           <div styleName="_add_2m71n">
             <div styleName="_adult">添加成人</div>
-            <div styleName="_adult">选择乘客</div>
+            <div styleName="_adult" onClick={onPassenger}>
+              选择乘客
+            </div>
           </div>
         </div>
 
@@ -99,9 +102,8 @@ function Order(props) {
                   >
                     <QIcon
                       scriptUrl={scriptUrl}
-                      type={orderfn ? v.icon1 : v.icon}
+                      type={orderfn == v.title ? v.icon1 : v.icon}
                       fontSize={'6.615459vw'}
-                      color={'#fff'}
                     />
                     <span styleName="spanBox">{v.title}</span>
                   </div>
@@ -115,9 +117,8 @@ function Order(props) {
                     <QIcon
                       onClick={() => onClick(v.title)}
                       scriptUrl={scriptUrl}
-                      type={v.icon}
+                      type={orderfn == v.title ? v.icon1 : v.icon}
                       fontSize={'6.615459vw'}
-                      color={'#fff'}
                     />
                     <span styleName="spanBox">{v.title}</span>
                   </div>

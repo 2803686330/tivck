@@ -2,12 +2,14 @@ import React from 'react';
 import './styles.less';
 import { Avatar, Dialog } from 'antd-mobile';
 import { connect } from 'dva';
+import { list } from './data';
 import { history } from 'umi';
 import { QIcon } from '@@@';
 export default connect(({ index }) => {
   return { token: index.token };
 })(User);
 function User(props) {
+  console.log(list);
   const { token } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_1u89h7gtca5.js'; //icon图标链接
 
@@ -49,7 +51,20 @@ function User(props) {
             )}
           </div>
         </div>
-        <div styleName="app_from_box">123</div>
+        <div styleName="app_from_box">
+          <ul>
+            {list.map((dt) => {
+              const { id, title, type, type1 } = dt;
+              return (
+                <li key={id} onClick={() => onUl(id)}>
+                  <QIcon type={type} fontSize="25px" />
+                  <div>{title}</div>
+                  <QIcon type={type1} fontSize="25px" />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

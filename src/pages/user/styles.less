@@ -65,6 +65,30 @@
             box-sizing: border-box;
             box-shadow: 0px 0.483092vw 11.594203vw 0px rgba(0, 0, 0, 0.1);
             border-radius: 20px;
+
+            ul {
+                width: 90%;
+                height: 100%;
+                margin: 0 40px;
+                list-style: none;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    height: 33%;
+                    border-bottom: 1px solid #ccc;
+
+                    &:nth-child(3) {
+                        border: 0;
+                    }
+
+                    div {
+                        flex: 1;
+                        margin-left: 30px;
+                    }
+                }
+            }
+
         }
     }
 }
