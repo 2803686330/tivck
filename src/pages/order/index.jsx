@@ -3,18 +3,19 @@ import { QIcon, QHead, QButton } from '@@@';
 import { Popup } from 'antd-mobile';
 import { history } from 'umi';
 import moment from 'moment';
+import data from './data';
 import './styles.less';
 function Order(props) {
+  const { orderState, orderState1 } = data;
   const { aStation, dStation, trainNumber, date, time, dTime, aTime, type } =
     props.location.query;
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_fyuc8am7i5g.js'; //icon图标链接
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_1u89h7gtca5.js'; //icon图标链接
   const [visible1, setVisible1] = useState(false);
-  //   弹层显示隐藏
-  const onPopup = () => {
-    setVisible1(!visible1);
-  };
-  const onPassenger = () => {
-    history.push('/passengers');
+  const [orderfn, setOrderfn] = useState(false);
+  const onPopup = () => setVisible1(!visible1); // 弹层显示隐藏
+  const onPassenger = () => history.push('/passengers'); //跳转
+  const onClick = (title) => {
+    setOrderfn(true);
   };
   return (
     <div styleName="order_box">
@@ -61,9 +62,70 @@ function Order(props) {
             <span>￥$100</span>
           </div>
         </div>
-        <div styleName="order_add">
-          <div>添加成人</div>
-          <div onClick={onPassenger}>选择乘客</div>
+        <div styleName="_passengers_box_">
+          <ul>
+            <li styleName="passenger_1mihs">
+              <i styleName="delete_1mihs">-</i>
+              <ol styleName="items_1mihs">
+                <li styleName="_item_1mihs_">
+                  <label styleName="_label_1mihs_38">姓名</label>
+                  <input
+                    styleName="input_1mihs"
+                    type="text"
+                    placeholder="乘客姓名"
+                  />
+                  <label styleName="_ticket_type">成人票</label>
+                </li>
+              </ol>
+            </li>
+          </ul>
+          <div styleName="_add_2m71n">
+            <div styleName="_adult">添加成人</div>
+            <div styleName="_adult">选择乘客</div>
+          </div>
+        </div>
+
+        <div styleName="choose_box">
+          <p styleName="tip_1wpkd">在线选座</p>
+          <div styleName="container_1wpkd">
+            <div styleName="seats_1wpkd">
+              <div>窗</div>
+              {orderState.map((v, i) => {
+                return (
+                  <div
+                    key={i}
+                    styleName="iconBox"
+                    onClick={() => onClick(v.title)}
+                  >
+                    <QIcon
+                      scriptUrl={scriptUrl}
+                      type={orderfn ? v.icon1 : v.icon}
+                      fontSize={'6.615459vw'}
+                      color={'#fff'}
+                    />
+                    <span styleName="spanBox">{v.title}</span>
+                  </div>
+                );
+              })}
+
+              <div>过道</div>
+              {orderState1.map((v, i) => {
+                return (
+                  <div key={i} styleName="iconBox">
+                    <QIcon
+                      onClick={() => onClick(v.title)}
+                      scriptUrl={scriptUrl}
+                      type={v.icon}
+                      fontSize={'6.615459vw'}
+                      color={'#fff'}
+                    />
+                    <span styleName="spanBox">{v.title}</span>
+                  </div>
+                );
+              })}
+              <div>窗</div>
+            </div>
+          </div>
         </div>
       </div>
       <div styleName="account_bjdsa">
@@ -93,9 +155,7 @@ function Order(props) {
       <Popup
         style={{ display: visible1 === true ? 'block' : 'none' }}
         visible={visible1}
-        onMaskClick={() => {
-          setVisible1(false);
-        }}
+        onMaskClick={() => setVisible1(false)}
         bodyStyle={{ height: '10vh' }}
       >
         <div styleName="price_info">金额详情</div>

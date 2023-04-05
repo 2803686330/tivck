@@ -15,10 +15,6 @@ function Ticket(props) {
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_znmv0t3rvd.js'; //icon图标链接
   const { aStation, dStation, trainNumber, date, time, dTime, aTime } =
     props.location.query;
-  // 返回上一页
-  const onIcon = () => {
-    window.history.back(-1);
-  };
   useEffect(() => {
     dispatch({
       type: 'ticket/fetchInfoList',
@@ -27,7 +23,8 @@ function Ticket(props) {
   const onButton = (dt) => {
     const { type } = dt;
     history.push(
-      `/order?trainNumber=${trainNumber}&dStation=${dStation}&aStation=${aStation}&type=${type}&date=${date}&time=${time}&dTime=${dTime}&aTime=${aTime}`,
+      `/order?trainNumber=${trainNumber}&dStation=${dStation}&aStation=${aStation}
+      &type=${type}&date=${date}&time=${time}&dTime=${dTime}&aTime=${aTime}`,
     );
   };
 
