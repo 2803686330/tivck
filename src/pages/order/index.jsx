@@ -14,10 +14,7 @@ function Order(props) {
   const [orderfn, setOrderfn] = useState('');
   const onPopup = () => setVisible1(!visible1); // 弹层显示隐藏
   const onPassenger = () => history.push('/passengers'); //跳转
-  const onClick = (title) => {
-    console.log(title);
-    setOrderfn(title);
-  };
+  const onClick = (title) => setOrderfn(title); //选座
   return (
     <div styleName="order_box">
       <div styleName="order_head">

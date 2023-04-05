@@ -9,4 +9,6 @@ export default {
   ticket: `/api/rest/ticket`, //购票数据详情接口
   order: `/api/rest/order`, //订单填写
   passengers: `/api/rest/passengers`, //乘客列表
+
+  passengerInfo: `/api/rest/passengerInfo`, //新增乘客回填
 };

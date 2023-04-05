@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { QIcon, QHead, QButton } from '@/components';
 import { Form, Input, Toast } from 'antd-mobile';
 import { history } from 'umi';
 import './styles.less';
+import { connect } from 'dva';
+
+export default connect(({ passengerDetail }) => {
+  return { passengerLists: passengerDetail.passengerLists };
+})(PassengerDetail);
 function PassengerDetail(props) {
+  const { dispatch, passengerLists } = props;
+
+  const [form] = Form.useForm();
+  const { bookerId } = props.location.query;
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_4pauw013d3w.js'; //icon图标链接
+
+  const passengerDetailList = async () => {
+    await dispatch({
+      type: 'passengerDetail/fetchOrderInfo',
+      payload: {
+        bookerId,
+      },
+    });
+  };
+  useEffect(() => {
+    passengerDetailList();
+    if (bookerId) {
+      form.setFieldsValue(passengerLists);
+    }
+  }, []);
+
   const onFinish = (values) => {
     if (values) {
       Toast.show({
@@ -61,6 +86,7 @@ function PassengerDetail(props) {
           />
         </div>
         <Form
+          form={form}
           layout="horizontal"
           onFinish={onFinish}
           footer={
@@ -76,14 +102,14 @@ function PassengerDetail(props) {
           }
         >
           <Form.Item
-            name="a"
+            name="ticketType"
             label="乘客类型"
             rules={[{ required: true, message: '请选择乘客类型!' }]}
           >
             <Input placeholder="请选择乘客类型" />
           </Form.Item>
           <Form.Item
-            name="b"
+            name="booker"
             label="姓名"
             help="详情地址"
             rules={[{ required: true, message: '请选输入乘客姓名!' }]}
@@ -91,21 +117,21 @@ function PassengerDetail(props) {
             <Input placeholder="与乘客证件姓名一致" showCount />
           </Form.Item>
           <Form.Item
-            name="c"
+            name="cardType"
             label="证件类型"
             rules={[{ required: true, message: '请选择证件类型!' }]}
           >
             <Input placeholder="请输入" />
           </Form.Item>
           <Form.Item
-            name="d"
+            name="idCard"
             label="证件号码"
             rules={[{ required: true, message: '请输入证件号码!' }]}
           >
             <Input placeholder="与乘客证件姓名一致" />
           </Form.Item>
           <Form.Item
-            name="e"
+            name="phoneNumber"
             label="手机号码"
             rules={[{ required: true, message: '请输入手机号码!' }]}
           >
@@ -126,5 +152,3 @@ function PassengerDetail(props) {
     </div>
   );
 }
-
-export default PassengerDetail;

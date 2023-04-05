@@ -1,13 +1,32 @@
 import { history } from 'umi';
 import api from '@/services';
 
-// 全局
 export default {
-  namespace: 'passdetail',
+  namespace: 'passengerDetail',
 
-  state: {},
+  state: {
+    passengerLists: {},
+  },
 
-  reducers: {},
+  reducers: {
+    setPassenge(state, { payload }) {
+      return {
+        ...state,
+        passengerLists: payload,
+      };
+    },
+  },
 
-  effects: {},
+  effects: {
+    *fetchOrderInfo({ payload }, { call, put }) {
+      const res = yield call(api.getPassengerInfo, payload);
+      console.log(res);
+      if (res.code === 200) {
+        yield put({
+          type: 'setPassenge',
+          payload: res.data,
+        });
+      }
+    },
+  },
 };

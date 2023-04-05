@@ -12,13 +12,17 @@ export default connect(({ passengers }) => {
 
 function Passengers(props) {
   const { dispatch, passengersList } = props;
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_4pauw013d3w.js'; //icon图标链接
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_eg16wqw7et6.js'; //icon图标链接
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   useEffect(() => {
     dispatch({
       type: 'passengers/fetchList',
     });
   }, []);
+  // 跳转详情
+  const backfill = (bookerId) => {
+    history.push(`/passengerDetail?bookerId=${bookerId}`);
+  };
 
   return (
     <div styleName="passengers_box">
@@ -77,11 +81,11 @@ function Passengers(props) {
               }
             >
               {passengersList.map((item, index) => {
-                const { booker, checked, idCard, ticketType } = item;
+                const { booker, checked, idCard, ticketType, bookerId } = item;
                 return (
                   <List.Item key={index}>
                     <dl>
-                      <dt>
+                      <dt onClick={() => backfill(bookerId)}>
                         <QIcon type="icon-changyonggoupiaorenbianji" />
                       </dt>
                       <dt>
