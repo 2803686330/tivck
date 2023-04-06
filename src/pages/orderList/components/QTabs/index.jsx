@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Tabs } from 'antd-mobile';
 import cs from 'classnames';
 import { connect } from 'dva';
+import { QButton } from '@@@'; //公共组件
+import { QDialog } from '@business'; //业务组件
 import './styles.less';
 export default connect(({ orderList, loading }) => {
   return {
@@ -36,6 +38,9 @@ function QTabs(props) {
   useEffect(() => {
     ordeList(0);
   }, []);
+  const onClick = (id) => {
+    console.log(id);
+  };
   return (
     <Tabs
       className={cs('tabsapp', { [className]: className })}
@@ -73,7 +78,13 @@ function QTabs(props) {
                     </div>
                   </div>
                   <div styleName="bottom_button">
-                    <button styleName="adm_button">删除订单</button>
+                    <QDialog />
+                    {/* <QButton
+                      title={'删除订单'}
+                      borderRadius={'5.555556vw'}
+                      fontSize={'2.898551vw'}
+                      onClick={() => onClick(dt.id)}
+                    /> */}
                   </div>
                 </div>
               );

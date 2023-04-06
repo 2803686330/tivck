@@ -67,6 +67,23 @@ export default [
       },
     ],
   },
+  // 订单详情
+  {
+    path: '/orderDetail',
+    routes: [
+      {
+        path: '/orderDetail',
+        component: './orderDetail',
+        title: 'orderDetail',
+      },
+      {
+        path: '/orderDetail?:id',
+        component: './orderDetail',
+        title: 'orderDetail',
+      },
+    ],
+  },
+
   // 其他路由
   {
     path: '/',

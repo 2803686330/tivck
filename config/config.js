@@ -15,12 +15,16 @@ export default defineConfig({
   targets: {
     ie: 11,
   },
+  // antd: {
+  //   mobile: false,
+  // },
   define: {
     environment: process.env.ENV,
   },
   alias: {
     '@': path.resolve(__dirname, '../src'),
     '@@@': path.resolve(__dirname, '../src/components'),
+    '@business': path.resolve(__dirname, '../src/business'),
     '@assets': path.resolve(__dirname, '../src/assets/images'),
     '@less': path.resolve(__dirname, '../src/theme/mixins.less'),
   },
