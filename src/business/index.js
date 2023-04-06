@@ -1,1 +1,1 @@
-export { default as QDialog } from '../business/QDialog'; //QDialog
+export { default as QDialog } from './QDialog'; //QDialog

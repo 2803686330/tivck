@@ -79,12 +79,6 @@ function QTabs(props) {
                   </div>
                   <div styleName="bottom_button">
                     <QDialog />
-                    {/* <QButton
-                      title={'删除订单'}
-                      borderRadius={'5.555556vw'}
-                      fontSize={'2.898551vw'}
-                      onClick={() => onClick(dt.id)}
-                    /> */}
                   </div>
                 </div>
               );

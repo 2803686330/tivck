@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { QButton } from '@@@';
 import { Dialog, Toast, DotLoading } from 'antd-mobile';
 import './styles.less';
+
 function QDialog(props) {
   const [ok, setOk] = useState(false);
   const okBox = ok ? <DotLoading color="primary" /> : '确定';
@@ -26,16 +27,17 @@ function QDialog(props) {
     // });
 
     Dialog.confirm({
-      content: '是否提交申请',
+      content:
+        '删除订单后将无法还原，订单删除不等于取消预订，确定完全删除此订单？',
       confirmText: okBox,
       onConfirm: () => {
-        console.log(1);
         setOk(true);
-        Toast.show({
-          icon: 'success',
-          content: '提交成功',
-          position: 'bottom',
-        });
+        setTimeout(() => setOk(false), 2000);
+        // Toast.show({
+        //   icon: 'success',
+        //   content: '提交成功',
+        //   position: 'bottom',
+        // });
       },
     });
   };
@@ -45,7 +47,7 @@ function QDialog(props) {
         title={'删除订单'}
         borderRadius={'5.555556vw'}
         fontSize={'2.898551vw'}
-        onClick={() => onClick()}
+        onClick={onClick}
       />
     </>
   );
