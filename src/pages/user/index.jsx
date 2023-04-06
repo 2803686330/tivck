@@ -9,12 +9,18 @@ export default connect(({ index }) => {
   return { token: index.token };
 })(User);
 function User(props) {
-  console.log(list);
   const { token } = props;
-  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_1u89h7gtca5.js'; //icon图标链接
-
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_seqqjc61zxh.js'; //icon图标链接
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-  console.log(token);
+  const buntFn = {
+    1: () => history.push(`/passengers?show=${0}`),
+    2: () => history.push('/orderList'),
+    3: () => history.push('/services'),
+  };
+  const onClick = (id) => {
+    //跳转
+    buntFn[id]();
+  };
   return (
     <div styleName="app">
       <div styleName="app_box">
@@ -39,9 +45,11 @@ function User(props) {
             ) : (
               <dl>
                 <dt>
-                  <Avatar
-                    style={{ marginLeft: '165px', borderRadius: '50%' }}
-                    src="http://10.161.54.76:3000/src/pages/user/components/avatar/avatar.svg"
+                  <QIcon
+                    type="icon-avatar"
+                    fontSize="8.695652vw"
+                    scriptUrl={scriptUrl}
+                    color={'#eee'}
                   />
                 </dt>
                 <dd>
@@ -56,10 +64,10 @@ function User(props) {
             {list.map((dt) => {
               const { id, title, type, type1 } = dt;
               return (
-                <li key={id} onClick={() => onUl(id)}>
-                  <QIcon type={type} fontSize="25px" />
-                  <div>{title}</div>
-                  <QIcon type={type1} fontSize="25px" />
+                <li key={id} onClick={() => onClick(id)}>
+                  <QIcon type={type} fontSize="20px" />
+                  <div styleName="titleBOx">{title}</div>
+                  <QIcon type={type1} fontSize="15px" />
                 </li>
               );
             })}
