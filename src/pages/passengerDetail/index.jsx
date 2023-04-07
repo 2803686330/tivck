@@ -25,8 +25,9 @@ function PassengerDetail(props) {
     });
   };
   useEffect(() => {
-    passengerDetailList();
+
     if (bookerId) {
+      passengerDetailList();
       form.setFieldsValue(passengerLists);
     }
   }, []);

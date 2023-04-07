@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { QIcon, QHead, QButton } from '@/components';
+import QPullToRefresh from "./components/PullToRefresh"
 import { PullToRefresh, List, Checkbox } from 'antd-mobile';
 import { history } from 'umi';
 import { connect } from 'dva';
@@ -65,21 +66,7 @@ function Passengers(props) {
           />
         </div>
         <div styleName="passengers_list">
-          <PullToRefresh>
-            <List
-              style={{ minHeight: '100vh' }}
-              header={
-                <div
-                  style={{
-                    textAlign: 'center',
-                    height: '50px',
-                    lineHeight: '50px',
-                  }}
-                >
-                  {'下拉可刷新乘客列表'}
-                </div>
-              }
-            >
+          <QPullToRefresh>
               {passengersList.map((item, index) => {
                 const { booker, checked, idCard, ticketType, bookerId } = item;
                 return (
@@ -108,8 +95,7 @@ function Passengers(props) {
                   </List.Item>
                 );
               })}
-            </List>
-          </PullToRefresh>
+          </QPullToRefresh>
         </div>
         <div styleName="bapw">本次购票服务由八维票务提供</div>
       </div>
