@@ -20,7 +20,6 @@ export default {
   effects: {
     *fetchOrderInfo({ payload }, { call, put }) {
       const res = yield call(api.getPassengerInfo, payload);
-      console.log(res);
       if (res.code === 200) {
         yield put({
           type: 'setPassenge',

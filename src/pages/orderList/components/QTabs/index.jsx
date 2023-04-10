@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Tabs } from 'antd-mobile';
+import { Tabs, Dialog, Toast } from 'antd-mobile';
 import cs from 'classnames';
 import { connect } from 'dva';
 import { QButton } from '@@@'; //公共组件
-import { QDialog } from '@business'; //业务组件
 import './styles.less';
 export default connect(({ orderList, loading }) => {
   return {
@@ -19,9 +18,10 @@ function QTabs(props) {
     { title: '待支付', key: 2 },
     { title: '退款/已取消', key: 3 },
   ];
+  const [orders, setOrders] = useState();
 
   const onChange = (opt) => {
-    console.log(opt);
+    //tabs切换
     ordeList(opt);
   };
 
@@ -41,6 +41,23 @@ function QTabs(props) {
   const onClick = (id) => {
     console.log(id);
   };
+
+  const onButton = (index) => {
+    Dialog.confirm({
+      content:
+        '删除订单后将无法还原,订单删除不等于取消预定,确定完全删除此订单?',
+      onConfirm: () => {
+        const order = orderList.splice(index, 1);
+        setOrders(order);
+        Toast.show({
+          icon: 'success',
+          content: '删除成功',
+          position: 'center',
+        });
+      },
+    });
+  };
+
   return (
     <Tabs
       className={cs('tabsapp', { [className]: className })}
@@ -61,7 +78,7 @@ function QTabs(props) {
             style={{ background: 'white' }}
             // styleName="adm-tabs-header"
           >
-            {orderList.map((dt) => {
+            {orderList.map((dt, index) => {
               return (
                 <div styleName="order" key={dt.id}>
                   <div styleName="order_info">
@@ -78,7 +95,13 @@ function QTabs(props) {
                     </div>
                   </div>
                   <div styleName="bottom_button">
-                    <QDialog />
+                    <QButton
+                      title="删除订单"
+                      onClick={() => onButton(index)}
+                      height={' 0.66667rem'}
+                      fontSize={'0.2rem'}
+                      styleName='button_box'
+                    />
                   </div>
                 </div>
               );
