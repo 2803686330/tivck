@@ -101,7 +101,7 @@ function OrderDetail(props) {
             <span>￥400</span>
           </div>
         </div>
-        {id === '1' ? null : (
+        {id === '' ? null : (
           <div styleName="button">
             <QButton
               width="90%" //设置按钮宽度
