@@ -60,7 +60,8 @@ function QTabs(props) {
   };
   // 跳转订单
   const onTabs= (id) => history.push(`/orderDetail?id=${id}`);
-
+  //阻止冒泡
+  const onDiv = (e) => e.stopPropagation();
   return (
     <Tabs
       className={cs('tabsapp', { [className]: className })}
@@ -97,7 +98,7 @@ function QTabs(props) {
                       <div styleName="ticket_status">已完成</div>
                     </div>
                   </div>
-                  <div styleName="bottom_button">
+                  <div styleName="bottom_button"  onClick={(e) => onDiv(e)}>
                     <QButton
                       title="删除订单"
                       onClick={() => onButton(index)}
