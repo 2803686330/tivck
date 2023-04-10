@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tabs, Dialog, Toast } from 'antd-mobile';
 import cs from 'classnames';
+import { history } from 'umi';
 import { connect } from 'dva';
 import { QButton } from '@@@'; //公共组件
 import './styles.less';
@@ -12,13 +13,13 @@ export default connect(({ orderList, loading }) => {
 })(QTabs);
 function QTabs(props) {
   const { className = '', dispatch, orderList, loading } = props;
+  const [orders, setOrders] = useState();
   const arr = [
     { title: '全部', key: 0 },
     { title: '待出行', key: 1 },
     { title: '待支付', key: 2 },
     { title: '退款/已取消', key: 3 },
   ];
-  const [orders, setOrders] = useState();
 
   const onChange = (opt) => {
     //tabs切换
@@ -57,6 +58,8 @@ function QTabs(props) {
       },
     });
   };
+  // 跳转订单
+  const onTabs= (id) => history.push(`/orderDetail?id=${id}`);
 
   return (
     <Tabs
@@ -80,7 +83,7 @@ function QTabs(props) {
           >
             {orderList.map((dt, index) => {
               return (
-                <div styleName="order" key={dt.id}>
+                <div styleName="order" key={dt.id}  onClick={() => onTabs(dt.id)}>
                   <div styleName="order_info">
                     <div styleName="order_info_left">
                       <div styleName="orain_name">{dt.trainName}</div>

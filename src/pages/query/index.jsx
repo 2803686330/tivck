@@ -46,7 +46,8 @@ function Query(props) {
   const onInfo = (dt) => {
     const { aStation, dStation, trainNumber, date, time, dTime, aTime } = dt;
     history.push(
-      `/ticket?aStation=${aStation}&dStation=${dStation}&trainNumber=${trainNumber}&date=${date}&time=${time}&dTime=${dTime}&aTime=${aTime}`,
+      `/ticket?aStation=${aStation}&dStation=${dStation}&trainNumber=${trainNumber}
+      &date=${date}&time=${time}&dTime=${dTime}&aTime=${aTime}`,
     );
   };
   return (
