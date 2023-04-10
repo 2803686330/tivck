@@ -17,10 +17,8 @@ function User(props) {
     2: () => history.push('/orderList'),
     3: () => history.push('/services'),
   };
-  const onClick = (id) => {
-    //跳转
-    buntFn[id]();
-  };
+  const onClick = (id) => buntFn[id](); //跳转
+  const onLogin = () => history.push('/user/login');//跳转登录
   return (
     <div styleName="app">
       <div styleName="app_box">
@@ -43,7 +41,7 @@ function User(props) {
                 />
               </div>
             ) : (
-              <dl>
+              <dl onClick={onLogin}>
                 <dt>
                   <QIcon
                     type="icon-avatar"
