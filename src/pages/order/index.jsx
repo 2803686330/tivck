@@ -15,6 +15,11 @@ function Order(props) {
   const onPopup = () => setVisible1(!visible1); // 弹层显示隐藏
   const onPassenger = () => history.push('/passengers'); //跳转
   const onClick = (title) => setOrderfn(title); //选座
+  const onOrder = () => {
+    history.push(
+      `/orderDetail?orderId=1&boxShow=false&orderStatus=2&departDate=1662652800000&arriveDate=112`,
+    );
+  }; //跳转支付
   return (
     <div styleName="order_box">
       <div styleName="order_head">
@@ -148,6 +153,7 @@ function Order(props) {
           borderRadius="5px" //设置按钮圆角
           background="#1BA9BA" //设置按钮背景
           styleName="buttons"
+          onClick={onOrder}
         />
       </div>
       <Popup

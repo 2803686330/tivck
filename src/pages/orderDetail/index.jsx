@@ -9,6 +9,11 @@ function OrderDetail(props) {
   const idCard = '410323199802302122';
   //   重新订购 跳转首页
   const onButton = () => history.push('/');
+  const standard = () => {
+    const w = window.open('_black')
+    let url='https://excashier.alipaydev.com/standard/auth.htm?payOrderId=a62799d6324d49e28a0d5e01b410f599.00'
+    w.location.href= url 
+  };
   return (
     <div styleName="orderdetail">
       <div styleName="orderdetail_head">
@@ -101,7 +106,18 @@ function OrderDetail(props) {
             <span>￥400</span>
           </div>
         </div>
-        {id === '' ? null : (
+        {id === undefined ? <div styleName="button">
+            <QButton
+              width="90%" //设置按钮宽度
+              height="45px" //设置按钮高度
+              title="去支付" //设置按钮文字
+              color="#fff" //设置按钮颜色
+              background="#FF8300" //设置按钮背景颜色
+              borderRadius="20px" //设置按钮圆角
+              margin="0 20px" //设置外边距
+              onClick={standard} //点击事件
+            />
+          </div> : (
           <div styleName="button">
             <QButton
               width="90%" //设置按钮宽度
