@@ -8,9 +8,7 @@ function Confirmpwd(props) {
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_okuv34z7jie.js'; //icon图标链接
   // 修改密码
   const onFinish = (values) => {
-    console.log(values);
     const pwd = JSON.parse(localStorage.getItem('password'));
-    console.log(pwd);
     // 如果密码一致跳转修改密码页面
     if (pwd === values.pwd) return history.push('/modifypwd');
   };

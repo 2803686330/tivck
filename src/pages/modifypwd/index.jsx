@@ -19,15 +19,14 @@ function Modifypwd(props) {
   };
   // 提交修改密码
   const onFinish = (values) => {
-    const pwd = JSON.parse(localStorage.getItem('password'));
-    if (pwd === values.pwd && values.qrpwd) {
+    if (values.pwd && values.qrpwd) {
       Toast.show({
         icon: 'success',
         content: '保存成功',
         duration: 1000,
       });
       setTimeout(() => {
-        history.push('/my');
+        history.push('/users');
       }, 1500);
     }
   };
