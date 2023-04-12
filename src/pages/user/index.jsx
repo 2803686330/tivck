@@ -12,6 +12,7 @@ function User(props) {
   const { token } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_seqqjc61zxh.js'; //icon图标链接
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  // 策略模式
   const buntFn = {
     1: () => history.push(`/passengers?show=${0}`),
     2: () => history.push('/orderList'),

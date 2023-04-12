@@ -14,10 +14,13 @@ function Qfrom(props) {
   //   提交
   const onSubmit = async () => {
     const values = form.getFieldsValue();
+    console.log(values);
     await dispatch({
       type: 'index/fetchLogin',
       payload: values,
     });
+      localStorage.setItem('password', JSON.stringify(values.password));
+
   };
 
   // 跳转注册

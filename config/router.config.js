@@ -2,11 +2,7 @@ export default [
   {
     path: '/user',
     routes: [
-      {
-        path: '/user/login',
-        component: './login',
-        title: '登录',
-      },
+      { path: '/user/login', component: './login', title: '登录' },
       { path: '/user/reg', component: './reg', title: '注册' },
     ],
   },
@@ -86,12 +82,21 @@ export default [
   // 设置
   {
     path: '/setting',
+    routes: [{ path: '/setting', component: './setting', title: 'setting' }],
+  },
+
+  // 修改密码
+  {
+    path: '/confirmpwd',
     routes: [
-      {
-        path: '/setting',
-        component: './setting',
-        title: 'setting',
-      },
+      { path: '/confirmpwd', component: './confirmpwd', title: 'confirmpwd' },
+    ],
+  },
+  // 设置密码
+  {
+    path: '/modifypwd',
+    routes: [
+      { path: '/modifypwd', component: './modifypwd', title: 'modifypwd' },
     ],
   },
   // 其他路由
