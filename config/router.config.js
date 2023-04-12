@@ -83,7 +83,17 @@ export default [
       },
     ],
   },
-
+  // 设置
+  {
+    path: '/setting',
+    routes: [
+      {
+        path: '/setting',
+        component: './setting',
+        title: 'setting',
+      },
+    ],
+  },
   // 其他路由
   {
     path: '/',

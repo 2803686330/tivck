@@ -19,13 +19,14 @@ function User(props) {
   };
   const onClick = (id) => buntFn[id](); //跳转
   const onLogin = () => history.push('/user/login');//跳转登录
+  const onSetting=()=>history.push('/setting')//跳转设置
   return (
     <div styleName="app">
       <div styleName="app_box">
         <div styleName="app_box_top">
           <div styleName="my_up">
             {token ? (
-              <div styleName="my_up_div">
+              <div styleName="my_up_div" onClick={onSetting}>
                 <QIcon
                   type="icon-avatar"
                   fontSize="8.695652vw"
