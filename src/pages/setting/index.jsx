@@ -10,10 +10,9 @@ export default connect((state) => {
 
 function Setting(props) {
   const { dispatch } = props;
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_okuv34z7jie.js'; //icon图标链接
   // 获取本地用户名
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-  //点击头部箭头返回上一页
-  const onIcon = () => window.history.back(-1);
 
   // 点击退出登录
   const onButton = () => {
@@ -24,7 +23,7 @@ function Setting(props) {
         await dispatch({
           type: 'index/fetchremvoe',
         });
-        history.push('/my');
+        history.push('/users');
       },
     });
   };
@@ -35,26 +34,29 @@ function Setting(props) {
   return (
     <div styleName="set_box">
       <div styleName="set_head">
-        <QIcon
-          type="icon-triangleLineLeft_1"
-          fontSize="20px"
-          color="block"
-          onClick={onIcon}
-        />
+        {/* 头部 */}
         <QHead
-          title="注册账号"
-          margin="0 30px 0 0"
-          fontWeight="bold"
-          fontSize="18px"
-          color="block"
+          title={'设置'}
+          color={'#000'}
+          fontSize={'8.347826vw'}
+          background={'#ffffff'}
+          backArrow={
+            <QIcon
+              scriptUrl={scriptUrl}
+              type={'icon-arrow-left'}
+              fontSize={'5.415459vw'}
+              color={'#000'}
+            />
+          }
         />
       </div>
       <div styleName="set_userinfo">
         <div>
-          <Avatar
-            src="http://10.161.6.58:3000/src/pages/user/components/avatar/avatar.svg"
-            alt=""
-            style={{ borderRadius: '50%' }}
+          <QIcon
+            type="icon-avatar"
+            fontSize="12.695652vw"
+            scriptUrl={scriptUrl}
+            color={'#eee'}
           />
           <div styleName="userinfo_name">
             {userInfo ? userInfo.username : null}
@@ -62,9 +64,9 @@ function Setting(props) {
         </div>
       </div>
       <div styleName="edit_pwd" onClick={onPwd}>
-        <QIcon type="icon-yanzhengma" fontSize="20px" />
+        <QIcon type="icon-ai243" fontSize="20px" />
         <div>修改密码</div>
-        <QIcon type="icon-triangleLineRight_1" fontSize="20px" />
+        <QIcon type="icon-arrow-right" fontSize="20px" color={'#ccc'}/>
       </div>
       <QButton
         title="退出登录"
