@@ -5,8 +5,7 @@ import { history } from 'umi';
 import './styles.less';
 function Modifypwd(props) {
   const [form] = Form.useForm();
-  // 点击头部箭头返回上一页
-  const onIcon = () => window.history.back(-1);
+  const scriptUrl = '//at.alicdn.com/t/c/font_3975386_okuv34z7jie.js'; //icon图标链接
   // 判断两次输入的密码是否一致
   const validatePsw = ({ getFieldValue }) => {
     return {
@@ -35,23 +34,24 @@ function Modifypwd(props) {
   return (
     <div styleName="modpwd_box">
       <div styleName="modpwd_head">
-        <QIcon
-          type="icon-xiangzuo" //icon图标
-          fontSize="40px" //设置icon图标大小
-          onClick={onIcon} //icon的点击事件
-        />
-        <QHead
-          width="100%"
-          title="" //头部标题文字
-          fontWeight="bold" //文字加粗
-          margin="0 30px 0 0" //设置外边距
-          fontSize="18px" //设置文字大小
-          color="#fff" //设置文字颜色
+      <QHead
+          title={''}
+          color={'#000'}
+          fontSize={'8.347826vw'}
+          background={'#ffffff'}
+          backArrow={
+            <QIcon
+              scriptUrl={scriptUrl}
+              type={'icon-arrow-left'}
+              fontSize={'5.415459vw'}
+              color={'#000'}
+            />
+          }
         />
       </div>
       <div styleName="modpwd_middle">
         <div styleName="modpwd_title">
-          <h1>修改密码</h1>
+          <h1>设置密码</h1>
           <div>请为你的账号位置新的密码</div>
         </div>
         <Form
