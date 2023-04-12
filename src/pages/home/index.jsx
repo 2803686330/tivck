@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Switch } from 'antd-mobile';
+import { Switch ,Dialog} from 'antd-mobile';
 import './styles.less';
 import { QIcon } from '@@@'; //引入icon
 import { Qswiper, Qcalender } from './components';
@@ -7,15 +7,16 @@ import { connect } from 'dva';
 import { history } from 'umi';
 import moment from 'moment';
 
-export default connect(({ home, city }) => {
+export default connect(({ home, city,index }) => {
   return {
     travelList: home.travelList, //出行快讯
     leftcity: city.leftcity, //左边城市
     rightcity: city.rightcity, //右边城市
+    token:index.token//拿token
   };
 })(Home);
 function Home(props) {
-  const { dispatch, travelList, leftcity, rightcity } = props;
+  const { dispatch, travelList, leftcity, rightcity ,token} = props;
   const [city, setCity] = useState(() => {
     return leftcity ? leftcity : '天津';
   }); //城市
@@ -48,10 +49,18 @@ function Home(props) {
     setCity(city1);
     setCity1(city);
   }; // 城市切换
-  const onSearch = (city, city1) =>
-    history.push(
-      `/query?from=${city}&to=${city1}&highSpeed=${highSpeed}&date=${date}`,
-    ); // 搜索跳转
+  const onSearch = (city, city1) =>{
+    if(token){
+      history.push(
+        `/query?from=${city}&to=${city1}&highSpeed=${highSpeed}&date=${date}`,
+      ); 
+    }
+    Dialog.confirm({
+      content: '你还没有登录，是否前往登录?',
+      onConfirm: () => history.push('/user/login'),
+    });
+  }
+   // 搜索跳转
   const onChange = (opt) => setHighSpeed(opt); //高铁开关
   return (
     <div styleName="app">

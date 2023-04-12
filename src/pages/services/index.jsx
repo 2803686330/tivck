@@ -1,9 +1,15 @@
 import React from 'react';
 import { QHead } from '@@@';
-import { QIcon } from '@@@';
+import { QIcon,QError } from '@@@';
 import './styles.less';
-
-function Services() {
+import { connect } from 'dva';
+export default connect(({ index }) => {
+  return {
+    token: index.token,
+  };
+})(Services);
+function Services(props) {
+  const { token } = props;
   const scriptUrl = '//at.alicdn.com/t/c/font_3975386_xtznr64brd.js'; //icon图标链接
   return (
     <div>
@@ -20,8 +26,12 @@ function Services() {
           />
         }
       />
+      {token ? '' :  <div styleName="error">
+          <QError />
+          <div>
+            <a href="/user/login">登录</a>
+          </div>
+        </div>}
     </div>
   );
 }
-
-export default Services;
