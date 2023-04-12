@@ -80,6 +80,7 @@
     "react-sortablejs": "^6.1.1",
     "redux-persist": "^6.0.0",
     "shortid": "^2.2.16",
+    "socket.io-client": "^4.6.1",
     "sortablejs": "^1.15.0",
     "swiper": "^6.4.1",
     "umi": "^3.4.8"

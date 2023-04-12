@@ -1,4 +1,62 @@
-.error {
+.service_box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .service_head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+  }
+
+  .service_middle {
+    flex: 1;
+    overflow: scroll;
+
+    .middle_customer {
+      position: relative;
+
+      .customer {
+        margin: 30px;
+      }
+
+      .customer_title {
+        position: absolute;
+        left: 120px;
+        top: 40px;
+        width: 580px;
+        height: 150px;
+        padding: 20px;
+        border-radius: 20px;
+        background: white;
+      }
+    }
+
+    .customer_list {
+      margin-top: 200px;
+      margin-bottom: 100px;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+
+      .list_left {
+        padding: 10px 20px;
+        border-radius: 20px 20px 20px 0;
+        background: white;
+        position: absolute;
+        right: 110px;
+        top: 30px;
+      }
+
+      .list_right {
+        margin: 0 20px;
+      }
+    }
+  }
+
+  .error {
     width: 100%;
     height: 450px;
     background: white;
@@ -7,15 +65,27 @@
     position: relative;
 
     div {
-        width: 100%;
-        text-align: center;
+      width: 100%;
+      text-align: center;
 
-        a {
-            position: absolute;
-            left: 47%;
-            bottom: -40px;
-            margin-top: 50px;
-            font-size: 20px;
-        }
+      a {
+        position: absolute;
+        left: 47%;
+        bottom: -40px;
+        margin-top: 50px;
+        font-size: 20px;
+      }
     }
+  }
+}
+
+:global(.adm-image-img) {
+  width: 60px;
+}
+
+.img {
+  img {
+    width: 100px;
+    height: 80px;
+  }
 }

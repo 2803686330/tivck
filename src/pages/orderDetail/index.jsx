@@ -11,8 +11,11 @@ function OrderDetail(props) {
   const onButton = () => history.push('/');
   const standard = () => {
     const w = window.open('_black')
-    let url='https://excashier.alipaydev.com/standard/auth.htm?payOrderId=a62799d6324d49e28a0d5e01b410f599.00'
+    let url='https://excashier.alipaydev.com/home/error.htm?webBundle=standard&errorCode=FISHING_RISK'
     w.location.href= url 
+    setTimeout(()=>{
+      history.push('/orderFinish')
+    },3000)
   };
   return (
     <div styleName="orderdetail">

@@ -54,11 +54,13 @@ function Home(props) {
       history.push(
         `/query?from=${city}&to=${city1}&highSpeed=${highSpeed}&date=${date}`,
       ); 
+    }else{
+      Dialog.confirm({
+        content: '你还没有登录，是否前往登录?',
+        onConfirm: () => history.push('/user/login'),
+      });
     }
-    Dialog.confirm({
-      content: '你还没有登录，是否前往登录?',
-      onConfirm: () => history.push('/user/login'),
-    });
+  
   }
    // 搜索跳转
   const onChange = (opt) => setHighSpeed(opt); //高铁开关

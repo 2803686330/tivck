@@ -99,6 +99,12 @@ export default [
       { path: '/modifypwd', component: './modifypwd', title: 'modifypwd' },
     ],
   },
+  {
+    path: '/orderFinish',
+    routes: [
+      { path: '/orderFinish', component: './orderFinish', title: 'orderFinish' },
+    ],
+  },
   // 其他路由
   {
     path: '/',
